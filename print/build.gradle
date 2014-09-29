@@ -12,3 +12,6 @@ android {
         versionName "1.0.0"
     }
 }
+
+// Used to push in maven
+apply from: '../maven_push.gradle'
