@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Black 87% -->
+    <color name="primary_text">#de000000</color>
+    <!-- Black 54% -->
+    <color name="secondary_text">#8a000000</color>
+
+    <color name="ab_icon">#ffffff</color>
+
+</resources>

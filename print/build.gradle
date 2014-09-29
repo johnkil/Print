@@ -1,0 +1,14 @@
+apply plugin: 'android-library'
+
+android {
+    compileSdkVersion 20
+    buildToolsVersion "20.0.0"
+
+    defaultConfig {
+        applicationId "com.github.johnkil.print"
+        minSdkVersion 3
+        targetSdkVersion 20
+        versionCode 1
+        versionName "1.0.0"
+    }
+}

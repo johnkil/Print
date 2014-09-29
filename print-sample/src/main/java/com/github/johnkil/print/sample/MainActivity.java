@@ -1,0 +1,87 @@
+/*
+ * Copyright 2014 Evgeny Shishkin
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+package com.github.johnkil.print.sample;
+
+import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.util.TypedValue;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.SeekBar;
+import android.widget.TextView;
+
+import com.github.johnkil.print.drawable.PrintDrawable;
+import com.github.johnkil.print.widget.PrintView;
+
+
+/**
+ * @author Evgeny Shishkin
+ */
+public class MainActivity extends ActionBarActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        final PrintView iconView = (PrintView) findViewById(R.id.icon);
+        final TextView sizeValue = (TextView) findViewById(R.id.size_value);
+        SeekBar sizeBar = (SeekBar) findViewById(R.id.size_bar);
+        sizeBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                sizeValue.setText(getString(R.string.size_format, progress));
+                iconView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        sizeBar.setProgress(320);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        menu.findItem(R.id.action_info).setIcon(
+                new PrintDrawable()
+                        .icon(getResources().getString(R.string.ic_info))
+                        .iconColor(getResources().getColor(R.color.ab_icon))
+                        .iconSize(getResources().getDimensionPixelSize(R.dimen.ab_icon))
+        );
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.action_info) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+}

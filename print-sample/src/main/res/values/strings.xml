@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Print</string>
+
+    <string name="action_info">Info</string>
+
+    <string name="size">Size:</string>
+    <string name="size_format">%ddp</string>
+
+</resources>

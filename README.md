@@ -1,4 +1,117 @@
 Print
 =====
 
-Lightweight Android library for use iconic fonts.
+A lightweight Android library for use iconic fonts.
+
+
+Download
+--------
+
+Gradle:
+
+```groovy
+compile 'com.github.johnkil.print:print:1.0.0'
+```
+
+Maven:
+
+```xml
+<dependency>
+    <groupId>com.github.johnkil.print</groupId>
+    <artifactId>print</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
+
+Usage
+-----
+
+Initialize the iconic font in [Application.onCreate()][1] method:
+
+```java
+public class MyApplication extends Application {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();                
+        Print.initFont(getAssets(), "fonts/iconic-font.ttf");
+    }
+
+}
+```
+
+#### PrintView
+
+Use `PrintView` as single icon in your layout.
+
+```xml
+<com.github.johnkil.print.widget.PrintView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ic_android"
+        android:textColor="@color/icon_color"
+        android:textSize="@dimen/icon_size"/>
+```
+
+#### PrintButton
+
+Use to create a button with an icon.
+
+```xml
+<com.github.johnkil.print.widget.PrintButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ic_android"
+        android:textColor="@color/icon_color"
+        android:textSize="@dimen/icon_size"/>
+```
+
+#### PrintDrawable
+
+If you need an icon in `ImageView` or in `ActionBar`, then you should use `PrintDrawable`.
+
+```java
+ImageView imageView = (ImageView) findViewById(R.id.image);
+// Set an icon in the ImageView
+imageView.setImageDrawable(new PrintDrawable()
+        .icon(getResources().getString(R.string.ic_info))
+        .iconColor(getResources().getColor(R.color.icon_color))
+        .iconSize(getResources().getDimensionPixelSize(R.dimen.icon_size)));
+}
+```
+
+```java
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.main, menu);
+    // Set an icon in the ActionBar
+    menu.findItem(R.id.action_info).setIcon(
+            new PrintDrawable()
+                    .icon(getResources().getString(R.string.ic_info))
+                    .iconColor(getResources().getColor(R.color.ab_icon_color))
+                    .iconSize(getResources().getDimensionPixelSize(R.dimen.ab_icon_size))
+    );
+    return true;
+}
+```
+
+
+License
+-------
+
+    Copyright 2014 Evgeny Shishkin
+    
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    
+    http://www.apache.org/licenses/LICENSE-2.0
+    
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+    
+
+[1]: http://developer.android.com/reference/android/app/Application.html#onCreate%28%29
