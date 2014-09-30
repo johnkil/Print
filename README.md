@@ -3,6 +3,8 @@ Print
 
 A lightweight Android library for use iconic fonts.
 
+![image](https://raw.githubusercontent.com/johnkil/Print/master/art/print.jpg)
+
 
 Download
 --------
@@ -26,7 +28,7 @@ Maven:
 Usage
 -----
 
-Initialize the iconic font in [Application.onCreate()][1] method:
+First, you need to initialize the iconic font in [Application.onCreate()][1] method.
 
 ```java
 public class MyApplication extends Application {
@@ -95,6 +97,11 @@ public boolean onCreateOptionsMenu(Menu menu) {
 }
 ```
 
+Links
+-----
+
+* [Android-Icon-Fonts][2] - Material and Holo iconic fonts.
+
 
 License
 -------
@@ -115,3 +122,4 @@ License
     
 
 [1]: http://developer.android.com/reference/android/app/Application.html#onCreate%28%29
+[2]: https://github.com/johnkil/Android-Icon-Fonts
