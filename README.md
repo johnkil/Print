@@ -7,7 +7,7 @@ A lightweight Android library for use iconic fonts.
 
 <a href="https://play.google.com/store/apps/details?id=com.github.johnkil.print.sample">
   <img alt="Get it on Google Play"
-       src="/images/brand/en_generic_rgb_wo_45.png" />
+       src="http://www.android.com/images/brand/get_it_on_play_logo_small.png" />
 </a>
 
 Download
