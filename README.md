@@ -5,6 +5,10 @@ A lightweight Android library for use iconic fonts.
 
 ![image](https://raw.githubusercontent.com/johnkil/Print/master/art/print.jpg)
 
+<a href="https://play.google.com/store/apps/details?id=com.github.johnkil.print.sample">
+  <img alt="Get it on Google Play"
+       src="/images/brand/en_generic_rgb_wo_45.png" />
+</a>
 
 Download
 --------
