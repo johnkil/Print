@@ -1,6 +1,8 @@
 Print
 =====
 
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-Print-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/1016)
+
 A lightweight Android library for use iconic fonts.
 
 ![image](https://raw.githubusercontent.com/johnkil/Print/master/art/print.jpg)
