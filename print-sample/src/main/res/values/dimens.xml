@@ -1,5 +1,5 @@
 <resources>
 
-    <dimen name="ab_icon">32dp</dimen>
+    <dimen name="ab_icon_size">32dp</dimen>
 
 </resources>

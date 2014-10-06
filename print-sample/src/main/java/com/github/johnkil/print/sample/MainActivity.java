@@ -78,8 +78,8 @@ public class MainActivity extends ActionBarActivity {
         menu.findItem(R.id.action_info).setIcon(
                 new PrintDrawable()
                         .iconText(getResources().getString(R.string.ic_info))
-                        .iconColor(getResources().getColor(R.color.ab_icon))
-                        .iconSize(getResources().getDimensionPixelSize(R.dimen.ab_icon))
+                        .iconColor(getResources().getColor(R.color.ab_icon_color))
+                        .iconSize(getResources().getDimensionPixelSize(R.dimen.ab_icon_size))
         );
         return true;
     }

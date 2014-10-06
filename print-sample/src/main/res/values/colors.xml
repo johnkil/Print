@@ -6,6 +6,6 @@
     <!-- Black 54% -->
     <color name="secondary_text">#8a000000</color>
 
-    <color name="ab_icon">#ffffff</color>
+    <color name="ab_icon_color">#ffffff</color>
 
 </resources>
