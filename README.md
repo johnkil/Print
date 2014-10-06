@@ -87,7 +87,6 @@ imageView.setImageDrawable(new PrintDrawable()
         .iconText(getResources().getString(R.string.ic_info))
         .iconColor(getResources().getColor(R.color.icon_color))
         .iconSize(getResources().getDimensionPixelSize(R.dimen.icon_size)));
-}
 ```
 
 ```java
