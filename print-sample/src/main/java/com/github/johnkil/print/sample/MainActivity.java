@@ -21,6 +21,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -45,7 +46,9 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 sizeValue.setText(getString(R.string.size_format, progress));
-                iconView.setTextSize(TypedValue.COMPLEX_UNIT_DIP, progress);
+                int iconSize = (int) TypedValue.applyDimension(
+                        TypedValue.COMPLEX_UNIT_DIP, progress, getResources().getDisplayMetrics());
+                iconView.setIconSize(iconSize);
             }
 
             @Override
@@ -59,6 +62,14 @@ public class MainActivity extends ActionBarActivity {
             }
         });
         sizeBar.setProgress(320);
+
+        // enable states for icon.
+        iconView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // on click process
+            }
+        });
     }
 
     @Override
@@ -66,7 +77,7 @@ public class MainActivity extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         menu.findItem(R.id.action_info).setIcon(
                 new PrintDrawable()
-                        .icon(getResources().getString(R.string.ic_info))
+                        .iconText(getResources().getString(R.string.ic_info))
                         .iconColor(getResources().getColor(R.color.ab_icon))
                         .iconSize(getResources().getDimensionPixelSize(R.dimen.ab_icon))
         );

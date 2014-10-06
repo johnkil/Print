@@ -8,4 +8,6 @@
     <string name="size">Size:</string>
     <string name="size_format">%ddp</string>
 
+    <string name="ic_adb_description">ADB</string>
+
 </resources>

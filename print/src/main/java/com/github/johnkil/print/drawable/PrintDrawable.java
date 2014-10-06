@@ -20,7 +20,6 @@ import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
-import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 
 import com.github.johnkil.print.Print;
@@ -34,27 +33,24 @@ public class PrintDrawable extends Drawable {
 
     private final Paint mPaint;
 
-    private String mIcon;
+    private CharSequence mIconText;
     private int mIconSize;
     private int mIconColor;
     private int mPadding;
 
-    private Rect mPaddingBounds;
-
     public PrintDrawable() {
         mPaint = new Paint();
         Print.applyFont(mPaint);
-        mPaddingBounds = new Rect();
     }
 
     /**
      * Set the icon.
      *
-     * @param icon The string representation of icon.
+     * @param iconText The string representation of icon.
      * @return The current PrintDrawable instance.
      */
-    public PrintDrawable icon(String icon) {
-        mIcon = icon;
+    public PrintDrawable iconText(CharSequence iconText) {
+        mIconText = iconText;
         invalidateSelf();
         return this;
     }
@@ -112,7 +108,10 @@ public class PrintDrawable extends Drawable {
     public void draw(Canvas canvas) {
         float x = mPadding;
         float y = getBounds().height() - mPadding;
-        canvas.drawText(mIcon, x, y, mPaint);
+
+        if (mIconText != null) {
+            canvas.drawText(mIconText.toString(), x, y, mPaint);
+        }
     }
 
     @Override

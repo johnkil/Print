@@ -16,7 +16,7 @@ Download
 Gradle:
 
 ```groovy
-compile 'com.github.johnkil.print:print:1.0.0'
+compile 'com.github.johnkil.print:print:1.1.0'
 ```
 
 Maven:
@@ -25,7 +25,7 @@ Maven:
 <dependency>
     <groupId>com.github.johnkil.print</groupId>
     <artifactId>print</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
 </dependency>
 ```
 
@@ -54,9 +54,10 @@ Use `PrintView` as single icon in your layout.
 <com.github.johnkil.print.widget.PrintView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/ic_android"
-        android:textColor="@color/icon_color"
-        android:textSize="@dimen/icon_size"/>
+        print:iconColor="@color/icon_color"
+        print:iconSize="@dimen/icon_size"
+        print:iconText="@string/ic_android"
+        android:contentDescription="@string/ic_android_description"/>
 ```
 
 #### PrintButton
@@ -67,9 +68,10 @@ Use to create a button with an icon.
 <com.github.johnkil.print.widget.PrintButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/ic_android"
-        android:textColor="@color/icon_color"
-        android:textSize="@dimen/icon_size"/>
+        print:iconColor="@color/icon_color"
+        print:iconSize="@dimen/icon_size"
+        print:iconText="@string/ic_android"
+        android:contentDescription="@string/ic_android_description"/>
 ```
 
 #### PrintDrawable
@@ -80,7 +82,7 @@ If you need an icon in `ImageView` or in `ActionBar`, then you should use `Print
 ImageView imageView = (ImageView) findViewById(R.id.image);
 // Set an icon in the ImageView
 imageView.setImageDrawable(new PrintDrawable()
-        .icon(getResources().getString(R.string.ic_info))
+        .iconText(getResources().getString(R.string.ic_info))
         .iconColor(getResources().getColor(R.color.icon_color))
         .iconSize(getResources().getDimensionPixelSize(R.dimen.icon_size)));
 }
@@ -93,7 +95,7 @@ public boolean onCreateOptionsMenu(Menu menu) {
     // Set an icon in the ActionBar
     menu.findItem(R.id.action_info).setIcon(
             new PrintDrawable()
-                    .icon(getResources().getString(R.string.ic_info))
+                    .iconText(getResources().getString(R.string.ic_info))
                     .iconColor(getResources().getColor(R.color.ab_icon_color))
                     .iconSize(getResources().getDimensionPixelSize(R.dimen.ab_icon_size))
     );

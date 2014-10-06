@@ -1,4 +1,5 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:print="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -21,7 +22,7 @@
         android:layout_toRightOf="@id/size_label"
         android:textColor="@color/secondary_text"
         android:textSize="18sp"
-        tools:text="16px"/>
+        tools:text="16dp"/>
 
     <SeekBar
         android:id="@+id/size_bar"
@@ -32,11 +33,12 @@
 
     <com.github.johnkil.print.widget.PrintView
         android:id="@+id/icon"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/size_bar"
-        android:textColor="#8bc34a"
-        android:text="@string/ic_adb"/>
+        android:contentDescription="@string/ic_adb_description"
+        print:iconText="@string/ic_adb"
+        print:iconColor="@color/icon"
+        print:iconSize="180dp"/>
 
 </RelativeLayout>
