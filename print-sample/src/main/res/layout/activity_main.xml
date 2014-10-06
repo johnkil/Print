@@ -37,8 +37,18 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/size_bar"
         android:contentDescription="@string/ic_adb_description"
-        print:iconText="@string/ic_adb"
+        print:iconText="@string/ic_material_adb"
         print:iconColor="@color/icon"
         print:iconSize="180dp"/>
 
+    <com.github.johnkil.print.widget.PrintButton
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:contentDescription="@string/ic_refresh_description"
+        print:fontName="holo-icon-font"
+        print:iconText="@string/ic_holo_refresh"
+        print:iconColor="@color/icon"
+        print:iconSize="32dp"/>
 </RelativeLayout>

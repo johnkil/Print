@@ -21,23 +21,65 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.widget.TextView;
 
+import java.io.File;
+import java.util.HashMap;
+
 /**
  * @author Evgeny Shishkin
  */
 public class Print {
-
-    private static Typeface sTypeface;
+    /**
+     * The default typeface (for backward compatibility)
+     */
+    private static Typeface sDefaultTypeface;
 
     /**
-     * Initialize the iconic font.
+     * A cache of all managed typefaces
+     */
+    private static HashMap<String, Typeface> sTypefaces = new HashMap<String, Typeface>();
+
+    /**
+     * Initialize an iconic font and add it to the cache. This will use the file name (without extension) as a reference name for the font.
      *
      * @param assets        The application's asset manager.
-     * @param fontAssetPath The file name of the font data in the assets directory.
+     * @param fontAssetPath The path of the font data in the assets directory.
      */
     public static void initFont(AssetManager assets, String fontAssetPath) {
-        sTypeface = Typeface.createFromAsset(assets, fontAssetPath);
-        if (sTypeface == null) {
-            throw new IllegalArgumentException("Error font initializing");
+        // Extract font file name (without extension) from path
+        File file = new File(fontAssetPath);
+        String fName = file.getName();
+        int pos = fName.lastIndexOf(".");
+
+        if (pos > 0) {
+            fName = fName.substring(0, pos);
+        }
+
+        initFont(assets, fontAssetPath, fName);
+    }
+
+    /**
+     * Initialize an iconic font and add it to the cache with the specified name.
+     *
+     * @param assets        The application's asset manager.
+     * @param fontAssetPath The path of the font data in the assets directory.
+     * @param fontName      The name of the font that will be used in reference to this font.
+     */
+    public static void initFont(AssetManager assets, String fontAssetPath, String fontName) {
+        if(fontName == null)
+        {
+            throw new IllegalArgumentException("Font name cannot be null");
+        }
+
+        Typeface tf = Typeface.createFromAsset(assets, fontAssetPath);
+        if (tf == null) {
+            throw new IllegalArgumentException("Could not initialize font " + fontAssetPath);
+        }
+
+        sTypefaces.put(fontName.toLowerCase(), tf);
+
+        // Set default typeface (if none was set before)
+        if (sDefaultTypeface == null) {
+            sDefaultTypeface = tf;
         }
     }
 
@@ -45,43 +87,85 @@ public class Print {
      * @return true if iconic font is initialized.
      */
     public static boolean isFontInit() {
-        return sTypeface != null;
+        return sTypefaces.size() > 0;
+    }
+
+    /**
+     * Returns the first font that was initialized.
+     *
+     * @return iconic font.
+     * @deprecated Use {@code getFont(String)} to get the font by name
+     */
+    @Deprecated
+    public static Typeface getFont() {
+        return getFont(null);
     }
 
     /**
      * @return iconic font.
      */
-    public static Typeface getFont() {
-        return sTypeface;
+    public static Typeface getFont(String fontName) {
+        if (isFontInit()) {
+            if (fontName == null) {
+                return sDefaultTypeface;
+            }
+
+            Typeface tf = sTypefaces.get(fontName.toLowerCase());
+            if(tf != null) {
+                return tf;
+            }
+            else
+            {
+                throw new IllegalArgumentException("Font " + fontName + " was not found. Did you initialize it properly?");
+            }
+        } else {
+            throw new IllegalStateException("No font is initialized");
+        }
     }
 
     /**
-     * Apply iconic font for TextView.
+     * Apply the default iconic font for TextView.
      *
      * @param view TextView.
      */
     public static void applyFont(TextView view) {
-        if (isFontInit()) {
-            view.setPaintFlags(view.getPaintFlags() | Paint.SUBPIXEL_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
-            view.setTypeface(sTypeface);
-        } else {
-            throw new IllegalStateException("Font is not initialized");
-        }
+        applyFont(view, null);
     }
 
     /**
-     * Apply iconic font for Paint.
+     * Apply the specified iconic font for TextView.
+     *
+     * @param view     The TextView.
+     * @param fontName The font file name (without extension).
+     */
+    public static void applyFont(TextView view, String fontName) {
+        Typeface tf = getFont(fontName);
+
+        view.setPaintFlags(view.getPaintFlags() | Paint.SUBPIXEL_TEXT_FLAG | Paint.ANTI_ALIAS_FLAG);
+        view.setTypeface(tf);
+    }
+
+    /**
+     * Apply the default iconic font for Paint.
      *
      * @param paint Paint.
      */
     public static void applyFont(Paint paint) {
-        if (isFontInit()) {
-            paint.setSubpixelText(true);
-            paint.setAntiAlias(true);
-            paint.setTypeface(sTypeface);
-        } else {
-            throw new IllegalStateException("Font is not initialized");
-        }
+        applyFont(paint, null);
+    }
+
+    /**
+     * Apply the specified iconic font for Paint.
+     *
+     * @param paint    Paint.
+     * @param fontName The font file name (without extension).
+     */
+    public static void applyFont(Paint paint, String fontName) {
+        Typeface tf = getFont(fontName);
+
+        paint.setSubpixelText(true);
+        paint.setAntiAlias(true);
+        paint.setTypeface(tf);
     }
 
 }

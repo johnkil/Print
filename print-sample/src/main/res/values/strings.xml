@@ -9,5 +9,6 @@
     <string name="size_format">%ddp</string>
 
     <string name="ic_adb_description">ADB</string>
+    <string name="ic_refresh_description">Refresh</string>
 
 </resources>

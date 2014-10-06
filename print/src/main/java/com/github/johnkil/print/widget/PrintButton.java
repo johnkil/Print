@@ -35,8 +35,9 @@ public class PrintButton extends ImageButton {
     private PrintDrawable mIcon;
     private CharSequence mIconText;
     private ColorStateList mIconColor;
-    private int mIconSize;
+    private String mFontName;
 
+    private int mIconSize;
     private int mCurIconColor;
 
     public PrintButton(Context context) {
@@ -61,6 +62,7 @@ public class PrintButton extends ImageButton {
             CharSequence iconText = null;
             ColorStateList iconColor = getResources().getColorStateList(R.color.icon_color);
             int iconSize = getResources().getDimensionPixelSize(R.dimen.icon_size);
+            String fontName = null;
 
             if (attrs != null) {
 
@@ -74,6 +76,10 @@ public class PrintButton extends ImageButton {
                     iconColor = a.getColorStateList(R.styleable.PrintView_iconColor);
                 }
 
+                if (a.hasValue(R.styleable.PrintView_fontName)) {
+                    fontName = a.getString(R.styleable.PrintView_fontName);
+                }
+
                 iconSize = a.getDimensionPixelSize(R.styleable.PrintView_iconSize, iconSize);
 
                 a.recycle();
@@ -82,6 +88,7 @@ public class PrintButton extends ImageButton {
             setIconSize(iconSize);
             setIconText(iconText);
             setIconColor(iconColor);
+            setFontName(fontName);
 
             invalidateIcon();
         }
@@ -92,6 +99,7 @@ public class PrintButton extends ImageButton {
      */
     protected void invalidateIcon() {
         mIcon = new PrintDrawable()
+                .fontName(mFontName)
                 .iconText(mIconText)
                 .iconColor(mCurIconColor)
                 .iconSize(mIconSize);
@@ -222,4 +230,17 @@ public class PrintButton extends ImageButton {
         }
     }
 
+    /**
+     * Set the font name to be used for this button.
+     *
+     * @param fontName  The reference name of the font.
+     */
+    public void setFontName(String fontName) {
+        this.mFontName = fontName;
+
+        if(mIcon != null)
+        {
+            mIcon.fontName(fontName);
+        }
+    }
 }

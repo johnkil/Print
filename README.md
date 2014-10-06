@@ -18,7 +18,7 @@ Download
 Gradle:
 
 ```groovy
-compile 'com.github.johnkil.print:print:1.1.0'
+compile 'com.github.johnkil.print:print:1.2.0'
 ```
 
 Maven:
@@ -27,14 +27,14 @@ Maven:
 <dependency>
     <groupId>com.github.johnkil.print</groupId>
     <artifactId>print</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
 </dependency>
 ```
 
 Usage
 -----
 
-First, you need to initialize the iconic font in [Application.onCreate()][1] method.
+First, you need to initialize the iconic fonts in [Application.onCreate()][1] method.
 
 ```java
 public class MyApplication extends Application {
@@ -42,11 +42,15 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();                
-        Print.initFont(getAssets(), "fonts/iconic-font.ttf");
+        Print.initFont(getAssets(), "fonts/iconic-font.ttf");                   // Default fon. It can be referred to as iconic-font
+        Print.initFont(getAssets(), "fonts/entypo.ttf");                        // Font can be referred to as entype
+        Print.initFont(getAssets(), "fonts/fontAwesome.ttf", "font-awesome");   // Specify a custom font name to be used in layouts
     }
 
 }
 ```
+
+This will initialize 3 fonts. If the 3rd parameter is not passed, the font will be named according to the font file name (without extension), so you can refer to it later in the layout. In the example above, the font names will be `iconic-font`, `entypo` and `font-awesome`. The first font will be used as the default font for all `PrintView`'s if no font name was specified.
 
 #### PrintView
 
@@ -58,9 +62,24 @@ Use `PrintView` as single icon in your layout.
         android:layout_height="wrap_content"
         print:iconColor="@color/icon_color"
         print:iconSize="@dimen/icon_size"
-        print:iconText="@string/ic_android"
+        print:iconText="@string/ic_material_android"
         android:contentDescription="@string/ic_android_description"/>
 ```
+
+This will use the default font (i.e. the first font that was initialized in [Application.onCreate()][1]). If you want to specify the font, set fontName attribute. For example:
+
+```xml
+<com.github.johnkil.print.widget.PrintView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        print:iconColor="@color/icon_color"
+        print:iconSize="@dimen/icon_size"
+        print:iconText="@string/ic_material_android"
+        app:fontName="font-awesome"
+        android:contentDescription="@string/ic_android_description"/>
+```
+
+Make sure to add `xmlns:print="http://schemas.android.com/apk/res-auto"` to the root view of your layout in order to use the `print` attribute namespace.
 
 #### PrintButton
 
@@ -70,6 +89,7 @@ Use to create a button with an icon.
 <com.github.johnkil.print.widget.PrintButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        print:fontName="entypo"
         print:iconColor="@color/icon_color"
         print:iconSize="@dimen/icon_size"
         print:iconText="@string/ic_android"
@@ -96,6 +116,7 @@ public boolean onCreateOptionsMenu(Menu menu) {
     // Set an icon in the ActionBar
     menu.findItem(R.id.action_info).setIcon(
             new PrintDrawable()
+                    .fontName("font-awesome")
                     .iconText(getResources().getString(R.string.ic_info))
                     .iconColor(getResources().getColor(R.color.ab_icon_color))
                     .iconSize(getResources().getDimensionPixelSize(R.dimen.ab_icon_size))
