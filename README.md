@@ -75,7 +75,7 @@ This will use the default font (i.e. the first font that was initialized in [App
         print:iconColor="@color/icon_color"
         print:iconSize="@dimen/icon_size"
         print:iconText="@string/ic_material_android"
-        app:fontName="font-awesome"
+        print:fontName="font-awesome"
         android:contentDescription="@string/ic_android_description"/>
 ```
 
