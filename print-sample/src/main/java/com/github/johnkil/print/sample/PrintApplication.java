@@ -29,6 +29,7 @@ public class PrintApplication extends Application {
     public void onCreate() {
         super.onCreate();
         Print.initFont(getAssets(), "fonts/material-icon-font.ttf");
+        Print.initFont(getAssets(), "fonts/holo-icon-font.ttf");
     }
 
 }

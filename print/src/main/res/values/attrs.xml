@@ -24,6 +24,8 @@
         <attr name="iconColor" format="color"/>
         <!-- Size of the icon. -->
         <attr name="iconSize" format="dimension"/>
+        <!-- Icon font name. -->
+        <attr name="fontName" format="string"/>
     </declare-styleable>
 
 </resources>

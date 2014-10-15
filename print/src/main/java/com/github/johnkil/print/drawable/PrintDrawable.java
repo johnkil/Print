@@ -92,6 +92,18 @@ public class PrintDrawable extends Drawable {
         return this;
     }
 
+    /**
+     * Set the font name to be used for this drawable.
+     *
+     * @param fontName  The reference name of the font
+     * @return The current PrintDrawable instance.
+     */
+    public PrintDrawable fontName(String fontName) {
+        Print.applyFont(mPaint, fontName);
+        invalidateSelf();
+        return this;
+    }
+
     @Override
     public int getIntrinsicHeight() {
         int height = mIconSize + 2 * mPadding;
@@ -128,5 +140,4 @@ public class PrintDrawable extends Drawable {
     public int getOpacity() {
         return PixelFormat.TRANSLUCENT;
     }
-
 }

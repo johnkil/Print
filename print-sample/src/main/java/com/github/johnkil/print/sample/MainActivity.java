@@ -77,7 +77,8 @@ public class MainActivity extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         menu.findItem(R.id.action_info).setIcon(
                 new PrintDrawable()
-                        .iconText(getResources().getString(R.string.ic_info))
+                        .fontName("holo-icon-font")
+                        .iconText(getResources().getString(R.string.ic_holo_about))
                         .iconColor(getResources().getColor(R.color.ab_icon_color))
                         .iconSize(getResources().getDimensionPixelSize(R.dimen.ab_icon_size))
         );

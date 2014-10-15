@@ -8,8 +8,8 @@ android {
         applicationId "com.github.johnkil.print"
         minSdkVersion 8
         targetSdkVersion 20
-        versionCode 2
-        versionName "1.1.0"
+        versionCode 3
+        versionName "1.2.0"
     }
 }
 
