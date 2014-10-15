@@ -64,7 +64,7 @@ Use `PrintView` as single icon in your layout.
 
 #### PrintButton
 
-Use to create a button with an icon.
+Use `PrintButton` to create a button with an icon.
 
 ```xml
 <com.github.johnkil.print.widget.PrintButton
@@ -119,7 +119,7 @@ License
     you may not use this file except in compliance with the License.
     You may obtain a copy of the License at
     
-    http://www.apache.org/licenses/LICENSE-2.0
+       http://www.apache.org/licenses/LICENSE-2.0
     
     Unless required by applicable law or agreed to in writing, software
     distributed under the License is distributed on an "AS IS" BASIS,
