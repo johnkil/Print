@@ -1,1 +1,2 @@
-include ':print', ':print-sample'
+include ':print'
+include ':print-sample'
