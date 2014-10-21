@@ -19,7 +19,7 @@ package com.github.johnkil.print;
 interface IPrintView extends IPrint {
 
     /**
-     * Return the icon, or null if no icon has been assigned.
+     * Return the assigned icon.
      */
     PrintDrawable getIcon();
 

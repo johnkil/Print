@@ -18,6 +18,9 @@ package com.github.johnkil.print;
 
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
+import android.support.annotation.ColorRes;
+import android.support.annotation.DimenRes;
+import android.support.annotation.StringRes;
 
 interface IPrint {
 
@@ -28,7 +31,7 @@ interface IPrint {
      * @see #setIconText(CharSequence)
      * @see #getIconText()
      */
-    void setIconText(int resId);
+    void setIconText(@StringRes int resId);
 
     /**
      * Sets the icon text.
@@ -55,7 +58,7 @@ interface IPrint {
      * @see #setIconColor(android.content.res.ColorStateList)
      * @see #getIconColor()
      */
-    void setIconColor(int resId);
+    void setIconColor(@ColorRes int resId);
 
     /**
      * Sets the icon color.
@@ -82,7 +85,7 @@ interface IPrint {
      * @see #setIconSize(int, float)
      * @see #getIconSize()
      */
-    void setIconSize(int resId);
+    void setIconSize(@DimenRes int resId);
 
     /**
      * Sets the icon size to a given unit and value. See {@link android.util.TypedValue}

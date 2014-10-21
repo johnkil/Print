@@ -25,6 +25,9 @@ import android.graphics.Path;
 import android.graphics.PixelFormat;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.support.annotation.ColorRes;
+import android.support.annotation.DimenRes;
+import android.support.annotation.StringRes;
 import android.util.Log;
 import android.util.TypedValue;
 
@@ -53,7 +56,7 @@ public class PrintDrawable extends Drawable implements IPrint {
             this.context = context;
         }
 
-        public Builder iconText(int resId) {
+        public Builder iconText(@StringRes int resId) {
             return iconText(context.getString(resId));
         }
 
@@ -62,7 +65,7 @@ public class PrintDrawable extends Drawable implements IPrint {
             return this;
         }
 
-        public Builder iconColor(int resId) {
+        public Builder iconColor(@ColorRes int resId) {
             return iconColor(context.getResources().getColorStateList(resId));
         }
 
@@ -86,7 +89,7 @@ public class PrintDrawable extends Drawable implements IPrint {
             return this;
         }
 
-        public Builder iconSize(int resId) {
+        public Builder iconSize(@DimenRes int resId) {
             iconSize = context.getResources().getDimensionPixelSize(resId);
             return this;
         }
