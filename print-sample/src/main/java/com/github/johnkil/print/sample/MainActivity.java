@@ -1,5 +1,5 @@
 /*
- * Copyright 2014 Evgeny Shishkin
+ * Copyright (C) 2014 Evgeny Shishkin
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,13 +25,9 @@ import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.github.johnkil.print.drawable.PrintDrawable;
-import com.github.johnkil.print.widget.PrintView;
+import com.github.johnkil.print.PrintDrawable;
+import com.github.johnkil.print.PrintView;
 
-
-/**
- * @author Evgeny Shishkin
- */
 public class MainActivity extends ActionBarActivity {
 
     @Override
@@ -46,9 +42,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 sizeValue.setText(getString(R.string.size_format, progress));
-                int iconSize = (int) TypedValue.applyDimension(
-                        TypedValue.COMPLEX_UNIT_DIP, progress, getResources().getDisplayMetrics());
-                iconView.setIconSize(iconSize);
+                iconView.setIconSize(TypedValue.COMPLEX_UNIT_DIP, progress);
             }
 
             @Override
@@ -70,16 +64,19 @@ public class MainActivity extends ActionBarActivity {
                 // on click process
             }
         });
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         menu.findItem(R.id.action_info).setIcon(
-                new PrintDrawable()
-                        .iconText(getResources().getString(R.string.ic_info))
-                        .iconColor(getResources().getColor(R.color.ab_icon_color))
-                        .iconSize(getResources().getDimensionPixelSize(R.dimen.ab_icon_size))
+                new PrintDrawable.Builder(this)
+                        .iconText(R.string.ic_holo_about)
+                        .iconColor(R.color.ab_icon_color)
+                        .iconFont("fonts/holo-icon-font.ttf")
+                        .iconSize(R.dimen.ab_icon_size)
+                        .build()
         );
         return true;
     }

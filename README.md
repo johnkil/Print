@@ -18,7 +18,7 @@ Download
 Gradle:
 
 ```groovy
-compile 'com.github.johnkil.print:print:1.1.0'
+compile 'com.github.johnkil.print:print:1.2.0'
 ```
 
 Maven:
@@ -27,14 +27,15 @@ Maven:
 <dependency>
     <groupId>com.github.johnkil.print</groupId>
     <artifactId>print</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
 </dependency>
 ```
 
 Usage
 -----
 
-First, you need to initialize the iconic font in [Application.onCreate()][1] method.
+First, you need to initialize the default iconic font in [Application.onCreate()][1] method. If
+the font is not specified, then the font is used by default.
 
 ```java
 public class MyApplication extends Application {
@@ -42,7 +43,7 @@ public class MyApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();                
-        Print.initFont(getAssets(), "fonts/iconic-font.ttf");
+        PrintConfig.initDefault(getAssets(), "fonts/iconic-font.ttf");
     }
 
 }
@@ -53,11 +54,12 @@ public class MyApplication extends Application {
 Use `PrintView` as single icon in your layout.
 
 ```xml
-<com.github.johnkil.print.widget.PrintView
+<com.github.johnkil.print.PrintView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         print:iconColor="@color/icon_color"
         print:iconSize="@dimen/icon_size"
+        print:iconFont="fonts/iconic-font.ttf"
         print:iconText="@string/ic_android"
         android:contentDescription="@string/ic_android_description"/>
 ```
@@ -67,11 +69,12 @@ Use `PrintView` as single icon in your layout.
 Use `PrintButton` to create a button with an icon.
 
 ```xml
-<com.github.johnkil.print.widget.PrintButton
+<com.github.johnkil.print.PrintButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         print:iconColor="@color/icon_color"
         print:iconSize="@dimen/icon_size"
+        print:iconFont="fonts/iconic-font.ttf"
         print:iconText="@string/ic_android"
         android:contentDescription="@string/ic_android_description"/>
 ```
@@ -83,10 +86,14 @@ If you need an icon in `ImageView` or in `ActionBar`, then you should use `Print
 ```java
 ImageView imageView = (ImageView) findViewById(R.id.image);
 // Set an icon in the ImageView
-imageView.setImageDrawable(new PrintDrawable()
-        .iconText(getResources().getString(R.string.ic_info))
-        .iconColor(getResources().getColor(R.color.icon_color))
-        .iconSize(getResources().getDimensionPixelSize(R.dimen.icon_size)));
+imageView.setImageDrawable(
+    new PrintDrawable.Builder(context)
+            .iconText(R.string.ic_info)
+            .iconColor(R.color.icon_color)
+            .iconSize(R.dimen.icon_size)
+            .iconFont("fonts/iconic-font.ttf")
+            .build()
+);
 ```
 
 ```java
@@ -95,10 +102,12 @@ public boolean onCreateOptionsMenu(Menu menu) {
     getMenuInflater().inflate(R.menu.main, menu);
     // Set an icon in the ActionBar
     menu.findItem(R.id.action_info).setIcon(
-            new PrintDrawable()
-                    .iconText(getResources().getString(R.string.ic_info))
-                    .iconColor(getResources().getColor(R.color.ab_icon_color))
-                    .iconSize(getResources().getDimensionPixelSize(R.dimen.ab_icon_size))
+            new PrintDrawable.Builder(context)
+                    .iconText(R.string.ic_info)
+                    .iconColor(R.color.ab_icon_color)
+                    .iconSize(R.dimen.ab_icon_size)
+                    .iconFont("fonts/iconic-font.ttf")
+                    .build()
     );
     return true;
 }
@@ -130,3 +139,8 @@ License
 
 [1]: http://developer.android.com/reference/android/app/Application.html#onCreate%28%29
 [2]: https://github.com/johnkil/Android-Icon-Fonts
+
+[0]: https://github.com/shamanland/fonticon
+[0]: https://github.com/atermenji/IconicDroid
+[0]: https://github.com/JoanZapata/android-iconify
+[0]: https://github.com/chrisjenx/Calligraphy

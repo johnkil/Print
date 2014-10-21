@@ -14,18 +14,13 @@
  * limitations under the License.
  */
 
-package com.github.johnkil.print.sample;
+package com.github.johnkil.print;
 
-import android.app.Application;
+interface IPrintView extends IPrint {
 
-import com.github.johnkil.print.PrintConfig;
-
-public class PrintApplication extends Application {
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        PrintConfig.initDefault(getAssets(), "fonts/material-icon-font.ttf");
-    }
+    /**
+     * Return the icon, or null if no icon has been assigned.
+     */
+    PrintDrawable getIcon();
 
 }
