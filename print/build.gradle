@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.github.johnkil.print"
-        minSdkVersion 8
+        minSdkVersion 3
         targetSdkVersion 21
         versionCode 4
         versionName "1.2.1"
