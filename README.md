@@ -28,6 +28,7 @@ Maven:
     <groupId>com.github.johnkil.print</groupId>
     <artifactId>print</artifactId>
     <version>1.2.1</version>
+    <type>aar</type>
 </dependency>
 ```
 
