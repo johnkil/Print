@@ -145,3 +145,4 @@ License
 [0]: https://github.com/atermenji/IconicDroid
 [0]: https://github.com/JoanZapata/android-iconify
 [0]: https://github.com/chrisjenx/Calligraphy
+[0]: https://github.com/theDazzler/droidicon
