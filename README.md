@@ -146,3 +146,4 @@ License
 [0]: https://github.com/JoanZapata/android-iconify
 [0]: https://github.com/chrisjenx/Calligraphy
 [0]: https://github.com/theDazzler/droidicon
+[0]: https://github.com/mikepenz/Android-Iconics
