@@ -28,6 +28,7 @@ Maven:
     <groupId>com.github.johnkil.print</groupId>
     <artifactId>print</artifactId>
     <version>1.2.1</version>
+    <type>aar</type>
 </dependency>
 ```
 
@@ -144,3 +145,5 @@ License
 [0]: https://github.com/atermenji/IconicDroid
 [0]: https://github.com/JoanZapata/android-iconify
 [0]: https://github.com/chrisjenx/Calligraphy
+[0]: https://github.com/theDazzler/droidicon
+[0]: https://github.com/mikepenz/Android-Iconics
