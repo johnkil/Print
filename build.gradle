@@ -3,12 +3,8 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:0.13.3'
+        classpath 'com.android.tools.build:gradle:1.0.0-rc1'
     }
-}
-
-def isReleaseBuild() {
-    return version.contains("SNAPSHOT") == false
 }
 
 allprojects {
@@ -18,6 +14,10 @@ allprojects {
     repositories {
         jcenter()
     }
+}
+
+def isReleaseBuild() {
+    return version.contains("SNAPSHOT") == false
 }
 
 apply plugin: 'android-reporting'
