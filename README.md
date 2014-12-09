@@ -147,3 +147,4 @@ License
 [0]: https://github.com/chrisjenx/Calligraphy
 [0]: https://github.com/theDazzler/droidicon
 [0]: https://github.com/mikepenz/Android-Iconics
+[0]: https://github.com/Malinskiy/android-material-icons
