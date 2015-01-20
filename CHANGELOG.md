@@ -2,6 +2,12 @@ Change Log
 ==========
 
 
+Version 1.2.2 *(2015-01-20)*
+----------------------------
+
+* Fix: Incorrect alignment of icons from [Font Awesome](http://fortawesome.github.io/Font-Awesome/).
+
+
 Version 1.2.1 *(2014-10-22)*
 ----------------------------
 
