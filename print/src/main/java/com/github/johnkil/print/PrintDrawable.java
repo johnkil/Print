@@ -23,6 +23,8 @@ import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PixelFormat;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorRes;
@@ -118,7 +120,8 @@ public class PrintDrawable extends Drawable implements IPrint {
 
     private final Context mContext;
     private final Paint mPaint;
-    private Path mPath;
+    private final Path mPath;
+    private final RectF mPathBounds;
 
     private CharSequence mIconText;
     private ColorStateList mIconColor;
@@ -133,6 +136,7 @@ public class PrintDrawable extends Drawable implements IPrint {
         mPaint = new Paint();
         mPaint.setFlags(mPaint.getFlags() | Paint.ANTI_ALIAS_FLAG | Paint.SUBPIXEL_TEXT_FLAG);
         mPath = new Path();
+        mPathBounds = new RectF();
 
         mIconText = iconText;
         mIconColor = iconColor;
@@ -208,8 +212,8 @@ public class PrintDrawable extends Drawable implements IPrint {
 
     @Override
     public void setIconSize(int unit, float size) {
-        int sizeInPx = (int) TypedValue.applyDimension(unit, size, mContext.getResources().getDisplayMetrics());
-        mIconSize = sizeInPx;
+        mIconSize = (int) TypedValue.applyDimension(
+                unit, size, mContext.getResources().getDisplayMetrics());
         mPaint.setTextSize(mIconSize);
         invalidateSelf();
     }
@@ -217,14 +221,6 @@ public class PrintDrawable extends Drawable implements IPrint {
     @Override
     public int getIconSize() {
         return mIconSize;
-    }
-
-    private void updateIconColors() {
-        int color = mIconColor.getColorForState(getState(), 0);
-        if (color != mCurIconColor) {
-            mCurIconColor = color;
-            mPaint.setColor(mCurIconColor);
-        }
     }
 
     @Override
@@ -241,6 +237,14 @@ public class PrintDrawable extends Drawable implements IPrint {
         return super.onStateChange(state);
     }
 
+    private void updateIconColors() {
+        int color = mIconColor.getColorForState(getState(), 0);
+        if (color != mCurIconColor) {
+            mCurIconColor = color;
+            mPaint.setColor(mCurIconColor);
+        }
+    }
+
     @Override
     public int getIntrinsicHeight() {
         return mIconSize;
@@ -254,12 +258,25 @@ public class PrintDrawable extends Drawable implements IPrint {
     @Override
     public void draw(Canvas canvas) {
         if (mIconText != null) {
-            float x = 0;
-            float y = getBounds().height();
-            mPaint.getTextPath((String) mIconText, 0, mIconText.length(), x, y, mPath);
+            final Rect bounds = getBounds();
+
+            mPaint.getTextPath(mIconText.toString(), 0, mIconText.length(), 0, bounds.height(), mPath);
+            mPath.computeBounds(mPathBounds, true);
+            offsetIcon(bounds);
+
             mPath.close();
             canvas.drawPath(mPath, mPaint);
         }
+    }
+
+    private void offsetIcon(Rect bounds) {
+        float startX = bounds.centerX() - (mPathBounds.width() / 2);
+        float offsetX = startX - mPathBounds.left;
+
+        float startY = bounds.centerY() - (mPathBounds.height() / 2);
+        float offsetY = startY - (mPathBounds.top);
+
+        mPath.offset(offsetX, offsetY);
     }
 
     @Override
