@@ -51,6 +51,8 @@ public class PrintDrawable extends Drawable implements IPrint {
         private Typeface iconFont;
         private int iconSize;
 
+        private boolean inEditMode = false;
+
         /**
          * Start building a new {@link PrintDrawable} instance.
          */
@@ -101,6 +103,11 @@ public class PrintDrawable extends Drawable implements IPrint {
             return this;
         }
 
+        Builder inEditMode(boolean inEditMode) {
+            this.inEditMode = inEditMode;
+            return this;
+        }
+
         /**
          * Create the {@link PrintDrawable} instance.
          */
@@ -114,7 +121,7 @@ public class PrintDrawable extends Drawable implements IPrint {
                 }
             }
 
-            return new PrintDrawable(context, iconText, iconColor, iconFont, iconSize);
+            return new PrintDrawable(context, iconText, iconColor, iconFont, iconSize, inEditMode);
         }
     }
 
@@ -130,8 +137,10 @@ public class PrintDrawable extends Drawable implements IPrint {
 
     private int mCurIconColor;
 
+    private boolean mInEditMode;
+
     private PrintDrawable(Context context, CharSequence iconText,
-                          ColorStateList iconColor, Typeface iconFont, int iconSize) {
+                          ColorStateList iconColor, Typeface iconFont, int iconSize, boolean inEditMode) {
         mContext = context;
         mPaint = new Paint();
         mPaint.setFlags(mPaint.getFlags() | Paint.ANTI_ALIAS_FLAG | Paint.SUBPIXEL_TEXT_FLAG);
@@ -142,6 +151,8 @@ public class PrintDrawable extends Drawable implements IPrint {
         mIconColor = iconColor;
         mIconFont = iconFont;
         mIconSize = iconSize;
+
+        mInEditMode = inEditMode;
 
         mPaint.setTextSize(mIconSize);
         mPaint.setTypeface(mIconFont);
@@ -257,7 +268,7 @@ public class PrintDrawable extends Drawable implements IPrint {
 
     @Override
     public void draw(Canvas canvas) {
-        if (mIconText != null) {
+        if (mIconText != null && !mInEditMode) {
             final Rect bounds = getBounds();
 
             mPaint.getTextPath(mIconText.toString(), 0, mIconText.length(), 0, bounds.height(), mPath);

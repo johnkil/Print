@@ -2,6 +2,12 @@ Change Log
 ==========
 
 
+Version 1.2.3 *(2015-01-21)*
+----------------------------
+
+* Fix: Error displaying the graphics preview in the layout editor.
+
+
 Version 1.2.2 *(2015-01-20)*
 ----------------------------
 

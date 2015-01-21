@@ -57,6 +57,8 @@ class PrintViewUtils {
             int iconSize = a.getDimensionPixelSize(R.styleable.PrintView_iconSize, 0);
             iconBuilder.iconSize(TypedValue.COMPLEX_UNIT_PX, iconSize);
 
+            iconBuilder.inEditMode(inEditMode);
+
             a.recycle();
         }
 
