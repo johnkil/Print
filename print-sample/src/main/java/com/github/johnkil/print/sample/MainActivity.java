@@ -17,7 +17,7 @@
 package com.github.johnkil.print.sample;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -28,7 +28,7 @@ import android.widget.TextView;
 import com.github.johnkil.print.PrintDrawable;
 import com.github.johnkil.print.PrintView;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

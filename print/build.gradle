@@ -1,19 +1,19 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 22
+    buildToolsVersion "22.0.1"
 
     defaultConfig {
         minSdkVersion 3
-        targetSdkVersion 21
+        targetSdkVersion 22
         versionCode 6
         versionName "1.2.3"
     }
 }
 
 dependencies {
-    compile 'com.android.support:support-annotations:21.0.3'
+    compile 'com.android.support:support-annotations:22.1.0'
 }
 
 // Used to push in maven
