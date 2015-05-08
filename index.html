@@ -1,37 +1,25 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Print : A lightweight Android library for use iconic fonts.">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Print</title>
+    <meta charset="UTF-8">
+    <title>Print by johnkil</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
+    <section class="page-header">
+      <h1 class="project-name">Print</h1>
+      <h2 class="project-tagline">A lightweight Android library for use iconic fonts.</h2>
+      <a href="https://github.com/johnkil/Print" class="btn">View on GitHub</a>
+      <a href="https://github.com/johnkil/Print/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/johnkil/Print/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/johnkil/Print">View on GitHub</a>
-
-          <h1 id="project_title">Print</h1>
-          <h2 id="project_tagline">A lightweight Android library for use iconic fonts.</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/johnkil/Print/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/johnkil/Print/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>
+    <section class="main-content">
+      <h1>
 <a id="print" class="anchor" href="#print" aria-hidden="true"><span class="octicon octicon-link"></span></a>Print</h1>
 
 <p><a href="https://android-arsenal.com/details/1/1016"><img src="https://img.shields.io/badge/Android%20Arsenal-Print-brightgreen.svg?style=flat" alt="Android Arsenal"></a></p>
@@ -49,14 +37,14 @@
 
 <p>Gradle:</p>
 
-<div class="highlight highlight-groovy"><pre>compile <span class="pl-s1"><span class="pl-pds">'</span>com.github.johnkil.print:print:1.2.2<span class="pl-pds">'</span></span></pre></div>
+<div class="highlight highlight-groovy"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.github.johnkil.print:print:1.2.3<span class="pl-pds">'</span></span></pre></div>
 
 <p>Maven:</p>
 
 <div class="highlight highlight-xml"><pre>&lt;<span class="pl-ent">dependency</span>&gt;
     &lt;<span class="pl-ent">groupId</span>&gt;com.github.johnkil.print&lt;/<span class="pl-ent">groupId</span>&gt;
     &lt;<span class="pl-ent">artifactId</span>&gt;print&lt;/<span class="pl-ent">artifactId</span>&gt;
-    &lt;<span class="pl-ent">version</span>&gt;1.2.2&lt;/<span class="pl-ent">version</span>&gt;
+    &lt;<span class="pl-ent">version</span>&gt;1.2.3&lt;/<span class="pl-ent">version</span>&gt;
     &lt;<span class="pl-ent">type</span>&gt;aar&lt;/<span class="pl-ent">type</span>&gt;
 &lt;/<span class="pl-ent">dependency</span>&gt;</pre></div>
 
@@ -66,12 +54,12 @@
 <p>First, you need to initialize the default iconic font in <a href="http://developer.android.com/reference/android/app/Application.html#onCreate%28%29">Application.onCreate()</a> method. If
 the font is not specified, then the font is used by default.</p>
 
-<div class="highlight highlight-java"><pre><span class="pl-s">public</span> <span class="pl-s">class</span> <span class="pl-en">MyApplication</span> <span class="pl-s">extends</span> <span class="pl-e">Application</span> {
+<div class="highlight highlight-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MyApplication</span> <span class="pl-k">extends</span> <span class="pl-e">Application</span> {
 
-    <span class="pl-st">@Override</span>
-    <span class="pl-s">public</span> <span class="pl-st">void</span> <span class="pl-en">onCreate</span>() {
+    <span class="pl-k">@Override</span>
+    <span class="pl-k">public</span> <span class="pl-k">void</span> <span class="pl-en">onCreate</span>() {
         <span class="pl-v">super</span><span class="pl-k">.</span>onCreate();                
-        <span class="pl-stj">PrintConfig</span><span class="pl-k">.</span>initDefault(getAssets(), <span class="pl-s1"><span class="pl-pds">"</span>fonts/iconic-font.ttf<span class="pl-pds">"</span></span>);
+        <span class="pl-smi">PrintConfig</span><span class="pl-k">.</span>initDefault(getAssets(), <span class="pl-s"><span class="pl-pds">"</span>fonts/iconic-font.ttf<span class="pl-pds">"</span></span>);
     }
 
 }</pre></div>
@@ -82,13 +70,13 @@ the font is not specified, then the font is used by default.</p>
 <p>Use <code>PrintView</code> as single icon in your layout.</p>
 
 <div class="highlight highlight-xml"><pre>&lt;<span class="pl-ent">com</span>.github.johnkil.print.PrintView
-        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s1"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
-        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s1"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
-        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconColor</span>=<span class="pl-s1"><span class="pl-pds">"</span>@color/icon_color<span class="pl-pds">"</span></span>
-        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconSize</span>=<span class="pl-s1"><span class="pl-pds">"</span>@dimen/icon_size<span class="pl-pds">"</span></span>
-        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconFont</span>=<span class="pl-s1"><span class="pl-pds">"</span>fonts/iconic-font.ttf<span class="pl-pds">"</span></span>
-        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconText</span>=<span class="pl-s1"><span class="pl-pds">"</span>@string/ic_android<span class="pl-pds">"</span></span>
-        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">contentDescription</span>=<span class="pl-s1"><span class="pl-pds">"</span>@string/ic_android_description<span class="pl-pds">"</span></span>/&gt;</pre></div>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
+        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconColor</span>=<span class="pl-s"><span class="pl-pds">"</span>@color/icon_color<span class="pl-pds">"</span></span>
+        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconSize</span>=<span class="pl-s"><span class="pl-pds">"</span>@dimen/icon_size<span class="pl-pds">"</span></span>
+        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconFont</span>=<span class="pl-s"><span class="pl-pds">"</span>fonts/iconic-font.ttf<span class="pl-pds">"</span></span>
+        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconText</span>=<span class="pl-s"><span class="pl-pds">"</span>@string/ic_android<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">contentDescription</span>=<span class="pl-s"><span class="pl-pds">"</span>@string/ic_android_description<span class="pl-pds">"</span></span>/&gt;</pre></div>
 
 <h4>
 <a id="printbutton" class="anchor" href="#printbutton" aria-hidden="true"><span class="octicon octicon-link"></span></a>PrintButton</h4>
@@ -96,40 +84,40 @@ the font is not specified, then the font is used by default.</p>
 <p>Use <code>PrintButton</code> to create a button with an icon.</p>
 
 <div class="highlight highlight-xml"><pre>&lt;<span class="pl-ent">com</span>.github.johnkil.print.PrintButton
-        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s1"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
-        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s1"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
-        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconColor</span>=<span class="pl-s1"><span class="pl-pds">"</span>@color/icon_color<span class="pl-pds">"</span></span>
-        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconSize</span>=<span class="pl-s1"><span class="pl-pds">"</span>@dimen/icon_size<span class="pl-pds">"</span></span>
-        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconFont</span>=<span class="pl-s1"><span class="pl-pds">"</span>fonts/iconic-font.ttf<span class="pl-pds">"</span></span>
-        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconText</span>=<span class="pl-s1"><span class="pl-pds">"</span>@string/ic_android<span class="pl-pds">"</span></span>
-        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">contentDescription</span>=<span class="pl-s1"><span class="pl-pds">"</span>@string/ic_android_description<span class="pl-pds">"</span></span>/&gt;</pre></div>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
+        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconColor</span>=<span class="pl-s"><span class="pl-pds">"</span>@color/icon_color<span class="pl-pds">"</span></span>
+        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconSize</span>=<span class="pl-s"><span class="pl-pds">"</span>@dimen/icon_size<span class="pl-pds">"</span></span>
+        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconFont</span>=<span class="pl-s"><span class="pl-pds">"</span>fonts/iconic-font.ttf<span class="pl-pds">"</span></span>
+        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconText</span>=<span class="pl-s"><span class="pl-pds">"</span>@string/ic_android<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">contentDescription</span>=<span class="pl-s"><span class="pl-pds">"</span>@string/ic_android_description<span class="pl-pds">"</span></span>/&gt;</pre></div>
 
 <h4>
 <a id="printdrawable" class="anchor" href="#printdrawable" aria-hidden="true"><span class="octicon octicon-link"></span></a>PrintDrawable</h4>
 
 <p>If you need an icon in <code>ImageView</code> or in <code>ActionBar</code>, then you should use <code>PrintDrawable</code>.</p>
 
-<div class="highlight highlight-java"><pre><span class="pl-stj">ImageView</span> imageView <span class="pl-k">=</span> (<span class="pl-stj">ImageView</span>) findViewById(<span class="pl-stj">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>image);
+<div class="highlight highlight-java"><pre><span class="pl-smi">ImageView</span> imageView <span class="pl-k">=</span> (<span class="pl-smi">ImageView</span>) findViewById(<span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>image);
 <span class="pl-c">// Set an icon in the ImageView</span>
 imageView<span class="pl-k">.</span>setImageDrawable(
-    <span class="pl-k">new</span> <span class="pl-stj">PrintDrawable</span>.<span class="pl-stj">Builder</span>(context)
-            .iconText(<span class="pl-stj">R</span><span class="pl-k">.</span>string<span class="pl-k">.</span>ic_info)
-            .iconColor(<span class="pl-stj">R</span><span class="pl-k">.</span>color<span class="pl-k">.</span>icon_color)
-            .iconSize(<span class="pl-stj">R</span><span class="pl-k">.</span>dimen<span class="pl-k">.</span>icon_size)
-            .iconFont(<span class="pl-s1"><span class="pl-pds">"</span>fonts/iconic-font.ttf<span class="pl-pds">"</span></span>)
+    <span class="pl-k">new</span> <span class="pl-smi">PrintDrawable</span>.<span class="pl-smi">Builder</span>(context)
+            .iconText(<span class="pl-smi">R</span><span class="pl-k">.</span>string<span class="pl-k">.</span>ic_info)
+            .iconColor(<span class="pl-smi">R</span><span class="pl-k">.</span>color<span class="pl-k">.</span>icon_color)
+            .iconSize(<span class="pl-smi">R</span><span class="pl-k">.</span>dimen<span class="pl-k">.</span>icon_size)
+            .iconFont(<span class="pl-s"><span class="pl-pds">"</span>fonts/iconic-font.ttf<span class="pl-pds">"</span></span>)
             .build()
 );</pre></div>
 
-<div class="highlight highlight-java"><pre>@<span class="pl-stj">Override</span>
-<span class="pl-s">public</span> <span class="pl-st">boolean</span> onCreateOptionsMenu(<span class="pl-stj">Menu</span> menu) {
-    getMenuInflater()<span class="pl-k">.</span>inflate(<span class="pl-stj">R</span><span class="pl-k">.</span>menu<span class="pl-k">.</span>main, menu);
+<div class="highlight highlight-java"><pre>@<span class="pl-smi">Override</span>
+<span class="pl-k">public</span> <span class="pl-k">boolean</span> onCreateOptionsMenu(<span class="pl-smi">Menu</span> menu) {
+    getMenuInflater()<span class="pl-k">.</span>inflate(<span class="pl-smi">R</span><span class="pl-k">.</span>menu<span class="pl-k">.</span>main, menu);
     <span class="pl-c">// Set an icon in the ActionBar</span>
-    menu<span class="pl-k">.</span>findItem(<span class="pl-stj">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>action_info)<span class="pl-k">.</span>setIcon(
-            <span class="pl-k">new</span> <span class="pl-stj">PrintDrawable</span>.<span class="pl-stj">Builder</span>(context)
-                    .iconText(<span class="pl-stj">R</span><span class="pl-k">.</span>string<span class="pl-k">.</span>ic_info)
-                    .iconColor(<span class="pl-stj">R</span><span class="pl-k">.</span>color<span class="pl-k">.</span>ab_icon_color)
-                    .iconSize(<span class="pl-stj">R</span><span class="pl-k">.</span>dimen<span class="pl-k">.</span>ab_icon_size)
-                    .iconFont(<span class="pl-s1"><span class="pl-pds">"</span>fonts/iconic-font.ttf<span class="pl-pds">"</span></span>)
+    menu<span class="pl-k">.</span>findItem(<span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>action_info)<span class="pl-k">.</span>setIcon(
+            <span class="pl-k">new</span> <span class="pl-smi">PrintDrawable</span>.<span class="pl-smi">Builder</span>(context)
+                    .iconText(<span class="pl-smi">R</span><span class="pl-k">.</span>string<span class="pl-k">.</span>ic_info)
+                    .iconColor(<span class="pl-smi">R</span><span class="pl-k">.</span>color<span class="pl-k">.</span>ab_icon_color)
+                    .iconSize(<span class="pl-smi">R</span><span class="pl-k">.</span>dimen<span class="pl-k">.</span>ab_icon_size)
+                    .iconFont(<span class="pl-s"><span class="pl-pds">"</span>fonts/iconic-font.ttf<span class="pl-pds">"</span></span>)
                     .build()
     );
     <span class="pl-k">return</span> <span class="pl-c1">true</span>;
@@ -160,18 +148,16 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 </code></pre>
-      </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Print maintained by <a href="https://github.com/johnkil">johnkil</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/johnkil/Print">Print</a> is maintained by <a href="https://github.com/johnkil">johnkil</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
 
-              <script type="text/javascript">
+    </section>
+
+            <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
             document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
           </script>
@@ -182,6 +168,6 @@ limitations under the License.
             } catch(err) {}
           </script>
 
-
   </body>
 </html>
+
