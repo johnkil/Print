@@ -13,7 +13,7 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-annotations:22.1.0'
+    compile 'com.android.support:support-annotations:22.1.1'
 }
 
 // Used to push in maven
