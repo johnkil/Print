@@ -20,6 +20,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Typeface;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DimenRes;
+import android.support.annotation.IntegerRes;
 import android.support.annotation.StringRes;
 
 interface IPrint {
@@ -32,6 +33,15 @@ interface IPrint {
      * @see #getIconText()
      */
     void setIconText(@StringRes int resId);
+
+    /**
+     * Sets the icon text based on int resources.
+     *
+     * @attr ref R.styleable#PrintView_iconIntText
+     * @see #setIconText(CharSequence)
+     * @see #getIconText()
+     */
+    void setIconIntText(@IntegerRes int resId);
 
     /**
      * Sets the icon text.

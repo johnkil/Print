@@ -21,8 +21,8 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.support.annotation.IntegerRes;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 import android.widget.ImageButton;
 
 /**
@@ -66,6 +66,11 @@ public class PrintButton extends ImageButton implements IPrintView {
     @Override
     public void setIconText(int resId) {
         getIcon().setIconText(resId);
+    }
+
+    @Override
+    public void setIconIntText(@IntegerRes int resId) {
+        setIconText(new String(Character.toChars(getResources().getInteger(resId))));
     }
 
     @Override
