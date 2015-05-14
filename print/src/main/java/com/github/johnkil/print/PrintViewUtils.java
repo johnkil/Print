@@ -39,6 +39,13 @@ class PrintViewUtils {
         if (attrs != null) {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.PrintView);
 
+            if (a.hasValue(R.styleable.PrintView_iconIntText)) {
+                int iconInt = a.getInteger(R.styleable.PrintView_iconIntText, 0);
+                if(iconInt > 0) {
+                    iconBuilder.iconText(new String(Character.toChars(iconInt)));
+                }
+            }
+
             if (a.hasValue(R.styleable.PrintView_iconText)) {
                 String iconText = a.getString(R.styleable.PrintView_iconText);
                 iconBuilder.iconText(iconText);

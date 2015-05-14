@@ -19,6 +19,7 @@
 
     <declare-styleable name="PrintView">
         <!-- Icon. -->
+        <attr name="iconIntText" format="integer"/>
         <attr name="iconText" format="string"/>
         <!-- Icon color. -->
         <attr name="iconColor" format="color"/>

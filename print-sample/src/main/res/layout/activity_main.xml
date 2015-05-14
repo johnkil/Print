@@ -54,7 +54,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/size_bar"
         android:contentDescription="@string/ic_adb_description"
-        print:iconText="@string/ic_material_adb"
+        print:iconFont="fonts/ss-standard.otf"
+        print:iconIntText="@integer/ic_ss_standard_phone"
         print:iconColor="@color/icon"
         print:iconSize="180dp"/>
 
