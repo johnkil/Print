@@ -39,92 +39,6 @@ import android.util.TypedValue;
  * @author Evgeny Shishkin
  */
 public class PrintDrawable extends Drawable implements IPrint {
-
-    /**
-     * Fluent API for creating {@link PrintDrawable} instances.
-     */
-    public static class Builder {
-        private final Context context;
-
-        private CharSequence iconText;
-        private ColorStateList iconColor;
-        private Typeface iconFont;
-        private int iconSize;
-
-        private boolean inEditMode = false;
-
-        /**
-         * Start building a new {@link PrintDrawable} instance.
-         */
-        public Builder(Context context) {
-            this.context = context;
-        }
-
-        public Builder iconText(@StringRes int resId) {
-            return iconText(context.getString(resId));
-        }
-
-        public Builder iconText(CharSequence text) {
-            iconText = text;
-            return this;
-        }
-
-        public Builder iconColor(@ColorRes int resId) {
-            return iconColor(context.getResources().getColorStateList(resId));
-        }
-
-        public Builder iconColor(ColorStateList colors) {
-            if (colors == null) {
-                throw new IllegalArgumentException("Color must not be null.");
-            }
-            iconColor = colors;
-            return this;
-        }
-
-        public Builder iconFont(String fontAssetPath) {
-            return iconFont(TypefaceManager.load(context.getAssets(), fontAssetPath));
-        }
-
-        public Builder iconFont(Typeface font) {
-            if (font == null) {
-                throw new IllegalArgumentException("Font must not be null.");
-            }
-            iconFont = font;
-            return this;
-        }
-
-        public Builder iconSize(@DimenRes int resId) {
-            iconSize = context.getResources().getDimensionPixelSize(resId);
-            return this;
-        }
-
-        public Builder iconSize(int unit, float size) {
-            iconSize = (int) TypedValue.applyDimension(unit, size, context.getResources().getDisplayMetrics());
-            return this;
-        }
-
-        Builder inEditMode(boolean inEditMode) {
-            this.inEditMode = inEditMode;
-            return this;
-        }
-
-        /**
-         * Create the {@link PrintDrawable} instance.
-         */
-        public PrintDrawable build() {
-            if (iconFont == null) {
-                PrintConfig config = PrintConfig.get();
-                if (config.isFontSet()) {
-                    iconFont = config.getFont();
-                } else {
-                    Log.w("Print", "The iconic font is not set.");
-                }
-            }
-
-            return new PrintDrawable(context, iconText, iconColor, iconFont, iconSize, inEditMode);
-        }
-    }
-
     private final Context mContext;
     private final Paint mPaint;
     private final Path mPath;
@@ -135,9 +49,9 @@ public class PrintDrawable extends Drawable implements IPrint {
     private Typeface mIconFont;
     private int mIconSize;
 
-    private int mCurIconColor;
+    private final boolean mInEditMode;
 
-    private boolean mInEditMode;
+    private int mCurIconColor;
 
     private PrintDrawable(Context context, CharSequence iconText,
                           ColorStateList iconColor, Typeface iconFont, int iconSize, boolean inEditMode) {
@@ -160,13 +74,13 @@ public class PrintDrawable extends Drawable implements IPrint {
     }
 
     @Override
-    public void setIconText(int resId) {
+    public void setIconTextRes(@StringRes int resId) {
         setIconText(mContext.getText(resId));
     }
 
     @Override
-    public void setIconText(CharSequence iconText) {
-        mIconText = iconText;
+    public void setIconText(CharSequence text) {
+        mIconText = text;
         invalidateSelf();
     }
 
@@ -176,8 +90,13 @@ public class PrintDrawable extends Drawable implements IPrint {
     }
 
     @Override
-    public void setIconColor(int resId) {
+    public void setIconColorRes(@ColorRes int resId) {
         setIconColor(mContext.getResources().getColorStateList(resId));
+    }
+
+    @Override
+    public void setIconColor(int color) {
+        setIconColor(ColorStateList.valueOf(color));
     }
 
     @Override
@@ -193,6 +112,30 @@ public class PrintDrawable extends Drawable implements IPrint {
     @Override
     public ColorStateList getIconColor() {
         return mIconColor;
+    }
+
+    @Override
+    public void setIconSizeRes(@DimenRes int resId) {
+        setIconSize(TypedValue.COMPLEX_UNIT_PX,
+                mContext.getResources().getDimensionPixelSize(resId));
+    }
+
+    @Override
+    public void setIconSizeDp(float size) {
+        setIconSize(TypedValue.COMPLEX_UNIT_DIP, size);
+    }
+
+    @Override
+    public void setIconSize(int unit, float size) {
+        mIconSize = (int) TypedValue.applyDimension(
+                unit, size, mContext.getResources().getDisplayMetrics());
+        mPaint.setTextSize(mIconSize);
+        invalidateSelf();
+    }
+
+    @Override
+    public int getIconSize() {
+        return mIconSize;
     }
 
     @Override
@@ -213,25 +156,6 @@ public class PrintDrawable extends Drawable implements IPrint {
     @Override
     public Typeface getIconFont() {
         return mIconFont;
-    }
-
-    @Override
-    public void setIconSize(int resId) {
-        setIconSize(TypedValue.COMPLEX_UNIT_PX,
-                mContext.getResources().getDimensionPixelSize(resId));
-    }
-
-    @Override
-    public void setIconSize(int unit, float size) {
-        mIconSize = (int) TypedValue.applyDimension(
-                unit, size, mContext.getResources().getDisplayMetrics());
-        mPaint.setTextSize(mIconSize);
-        invalidateSelf();
-    }
-
-    @Override
-    public int getIconSize() {
-        return mIconSize;
     }
 
     @Override
@@ -303,6 +227,101 @@ public class PrintDrawable extends Drawable implements IPrint {
     @Override
     public int getOpacity() {
         return PixelFormat.TRANSLUCENT;
+    }
+
+    /**
+     * Fluent API for creating {@link PrintDrawable} instances.
+     */
+    @SuppressWarnings("unused")
+    public static class Builder {
+        private final Context mContext;
+
+        private CharSequence mIconText;
+        private ColorStateList mIconColor;
+        private Typeface mIconFont;
+        private int mIconSize;
+
+        private boolean mInEditMode = false;
+
+        /**
+         * Start building a new {@link PrintDrawable} instance.
+         */
+        public Builder(Context context) {
+            mContext = context;
+        }
+
+        public Builder iconTextRes(@StringRes int resId) {
+            return iconText(mContext.getString(resId));
+        }
+
+        public Builder iconText(CharSequence text) {
+            mIconText = text;
+            return this;
+        }
+
+        public Builder iconColorRes(@ColorRes int resId) {
+            return iconColor(mContext.getResources().getColorStateList(resId));
+        }
+
+        public Builder iconColor(int color) {
+            return iconColor(ColorStateList.valueOf(color));
+        }
+
+        public Builder iconColor(ColorStateList colors) {
+            if (colors == null) {
+                throw new IllegalArgumentException("Color must not be null.");
+            }
+            mIconColor = colors;
+            return this;
+        }
+
+        public Builder iconSizeRes(@DimenRes int resId) {
+            return iconSize(TypedValue.COMPLEX_UNIT_PX,
+                    mContext.getResources().getDimensionPixelSize(resId));
+        }
+
+        public Builder iconSizeDp(float size) {
+            return iconSize(TypedValue.COMPLEX_UNIT_DIP, size);
+        }
+
+        public Builder iconSize(int unit, float size) {
+            mIconSize = (int) TypedValue.applyDimension(
+                    unit, size, mContext.getResources().getDisplayMetrics());
+            return this;
+        }
+
+        public Builder iconFont(String assetsPath) {
+            return iconFont(TypefaceManager.load(mContext.getAssets(), assetsPath));
+        }
+
+        public Builder iconFont(Typeface font) {
+            if (font == null) {
+                throw new IllegalArgumentException("Font must not be null.");
+            }
+            mIconFont = font;
+            return this;
+        }
+
+        Builder inEditMode(boolean inEditMode) {
+            mInEditMode = inEditMode;
+            return this;
+        }
+
+        /**
+         * Create the {@link PrintDrawable} instance.
+         */
+        public PrintDrawable build() {
+            if (mIconFont == null) {
+                PrintConfig config = PrintConfig.get();
+                if (config.isFontSet()) {
+                    mIconFont = config.getFont();
+                } else {
+                    Log.w("Print", "The iconic font is not set.");
+                }
+            }
+
+            return new PrintDrawable(mContext, mIconText, mIconColor, mIconFont, mIconSize, mInEditMode);
+        }
     }
 
 }

@@ -31,7 +31,7 @@ class TypefaceManager {
     /**
      * The cached typefaces.
      */
-    private static final HashMap<String, Typeface> sTypefaces = new HashMap<String, Typeface>();
+    private static final HashMap<String, Typeface> sTypefaces = new HashMap<>();
 
     /**
      * Load a typeface from the specified font data.

@@ -18,7 +18,6 @@ package com.github.johnkil.print.sample;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -42,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 sizeValue.setText(getString(R.string.size_format, progress));
-                iconView.setIconSize(TypedValue.COMPLEX_UNIT_DIP, progress);
+                iconView.setIconSizeDp(progress);
             }
 
             @Override
@@ -72,10 +71,10 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         menu.findItem(R.id.action_info).setIcon(
                 new PrintDrawable.Builder(this)
-                        .iconText(R.string.ic_holo_about)
-                        .iconColor(R.color.ab_icon_color)
+                        .iconTextRes(R.string.ic_holo_about)
+                        .iconColorRes(R.color.ab_icon_color)
+                        .iconSizeRes(R.dimen.ab_icon_size)
                         .iconFont("fonts/holo-icon-font.ttf")
-                        .iconSize(R.dimen.ab_icon_size)
                         .build()
         );
         return true;

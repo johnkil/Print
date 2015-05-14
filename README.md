@@ -18,7 +18,7 @@ Download
 Gradle:
 
 ```groovy
-compile 'com.github.johnkil.print:print:1.2.3'
+compile 'com.github.johnkil.print:print:1.3.0'
 ```
 
 Maven:
@@ -27,7 +27,7 @@ Maven:
 <dependency>
     <groupId>com.github.johnkil.print</groupId>
     <artifactId>print</artifactId>
-    <version>1.2.3</version>
+    <version>1.3.0</version>
     <type>aar</type>
 </dependency>
 ```
@@ -58,10 +58,10 @@ Use `PrintView` as single icon in your layout.
 <com.github.johnkil.print.PrintView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        print:iconText="@string/ic_android"
         print:iconColor="@color/icon_color"
         print:iconSize="@dimen/icon_size"
         print:iconFont="fonts/iconic-font.ttf"
-        print:iconText="@string/ic_android"
         android:contentDescription="@string/ic_android_description"/>
 ```
 
@@ -73,10 +73,10 @@ Use `PrintButton` to create a button with an icon.
 <com.github.johnkil.print.PrintButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        print:iconText="@string/ic_android"
         print:iconColor="@color/icon_color"
         print:iconSize="@dimen/icon_size"
         print:iconFont="fonts/iconic-font.ttf"
-        print:iconText="@string/ic_android"
         android:contentDescription="@string/ic_android_description"/>
 ```
 
@@ -89,9 +89,9 @@ ImageView imageView = (ImageView) findViewById(R.id.image);
 // Set an icon in the ImageView
 imageView.setImageDrawable(
     new PrintDrawable.Builder(context)
-            .iconText(R.string.ic_info)
-            .iconColor(R.color.icon_color)
-            .iconSize(R.dimen.icon_size)
+            .iconTextRes(R.string.ic_info)
+            .iconColorRes(R.color.icon_color)
+            .iconSizeRes(R.dimen.icon_size)
             .iconFont("fonts/iconic-font.ttf")
             .build()
 );
@@ -104,9 +104,9 @@ public boolean onCreateOptionsMenu(Menu menu) {
     // Set an icon in the ActionBar
     menu.findItem(R.id.action_info).setIcon(
             new PrintDrawable.Builder(context)
-                    .iconText(R.string.ic_info)
-                    .iconColor(R.color.ab_icon_color)
-                    .iconSize(R.dimen.ab_icon_size)
+                    .iconTextRes(R.string.ic_info)
+                    .iconColorRes(R.color.ab_icon_color)
+                    .iconSizeRes(R.dimen.ab_icon_size)
                     .iconFont("fonts/iconic-font.ttf")
                     .build()
     );

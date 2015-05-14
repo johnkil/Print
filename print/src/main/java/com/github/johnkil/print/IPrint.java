@@ -31,13 +31,13 @@ interface IPrint {
      * @see #setIconText(CharSequence)
      * @see #getIconText()
      */
-    void setIconText(@StringRes int resId);
+    void setIconTextRes(@StringRes int resId);
 
     /**
      * Sets the icon text.
      *
      * @attr ref R.styleable#PrintView_iconText
-     * @see #setIconText(int)
+     * @see #setIconTextRes(int)
      * @see #getIconText()
      */
     void setIconText(CharSequence text);
@@ -46,7 +46,7 @@ interface IPrint {
      * Return the icon text, or null if icon text is not set.
      *
      * @attr ref R.styleable#PrintView_iconText
-     * @see #setIconText(int)
+     * @see #setIconTextRes(int)
      * @see #setIconText(CharSequence)
      */
     CharSequence getIconText();
@@ -55,15 +55,27 @@ interface IPrint {
      * Sets the icon color from resources.
      *
      * @attr ref R.styleable#PrintView_iconColor
-     * @see #setIconColor(android.content.res.ColorStateList)
+     * @see #setIconColor(int)
+     * @see #setIconColor(ColorStateList)
      * @see #getIconColor()
      */
-    void setIconColor(@ColorRes int resId);
+    void setIconColorRes(@ColorRes int resId);
+
+    /**
+     * Sets the icon color for all the states (normal, selected, focused) to be this color.
+     *
+     * @attr ref R.styleable#PrintView_iconColor
+     * @see #setIconColorRes(int)
+     * @see #setIconColor(ColorStateList)
+     * @see #getIconColor()
+     */
+    void setIconColor(int color);
 
     /**
      * Sets the icon color.
      *
      * @attr ref R.styleable#PrintView_iconColor
+     * @see #setIconColorRes(int)
      * @see #setIconColor(int)
      * @see #getIconColor()
      */
@@ -73,8 +85,9 @@ interface IPrint {
      * Return the icon colors for the different states (normal, selected, focused).
      *
      * @attr ref R.styleable#PrintView_iconColor
-     * @see #setIconColor(ColorStateList)
+     * @see #setIconColorRes(int)
      * @see #setIconColor(int)
+     * @see #setIconColor(ColorStateList)
      */
     ColorStateList getIconColor();
 
@@ -82,10 +95,22 @@ interface IPrint {
      * Sets the icon size from resources.
      *
      * @attr ref R.styleable#PrintView_iconSize
+     * @see #setIconSizeDp(float)
      * @see #setIconSize(int, float)
      * @see #getIconSize()
      */
-    void setIconSize(@DimenRes int resId);
+    void setIconSizeRes(@DimenRes int resId);
+
+    /**
+     * Sets the icon size to the given value, interpreted as "device independent pixels" units.
+     *
+     * @param size The device independent pixels size.
+     * @attr ref R.styleable#PrintView_iconSize
+     * @see #setIconSizeRes(int)
+     * @see #setIconSize(int, float)
+     * @see #getIconSize()
+     */
+    void setIconSizeDp(float size);
 
     /**
      * Sets the icon size to a given unit and value. See {@link android.util.TypedValue}
@@ -94,7 +119,8 @@ interface IPrint {
      * @param unit The desired dimension unit.
      * @param size The desired size in the given units.
      * @attr ref R.styleable#PrintView_iconSize
-     * @see #setIconSize(int)
+     * @see #setIconSizeRes(int)
+     * @see #setIconSizeDp(float)
      * @see #getIconSize()
      */
     void setIconSize(int unit, float size);
@@ -103,7 +129,8 @@ interface IPrint {
      * Return the icon size (in pixels).
      *
      * @attr ref R.styleable#PrintView_iconSize
-     * @see #setIconSize(int)
+     * @see #setIconSizeRes(int)
+     * @see #setIconSizeDp(float)
      * @see #setIconSize(int, float)
      */
     int getIconSize();
@@ -113,7 +140,7 @@ interface IPrint {
      *
      * @param path The file name of the font in the assets directory, e.g. "fonts/iconic-font.ttf".
      * @attr ref R.styleable#PrintView_iconFont
-     * @see #setIconFont(android.graphics.Typeface)
+     * @see #setIconFont(Typeface)
      * @see #getIconFont()
      */
     void setIconFont(String path);
@@ -132,7 +159,7 @@ interface IPrint {
      *
      * @attr ref R.styleable#PrintView_iconFont
      * @see #setIconFont(String)
-     * @see #setIconFont(android.graphics.Typeface)
+     * @see #setIconFont(Typeface)
      */
     Typeface getIconFont();
 

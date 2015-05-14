@@ -21,6 +21,9 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Typeface;
 import android.os.Build;
+import android.support.annotation.ColorRes;
+import android.support.annotation.DimenRes;
+import android.support.annotation.StringRes;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 
@@ -63,8 +66,8 @@ public class PrintView extends ImageView implements IPrintView {
     }
 
     @Override
-    public void setIconText(int resId) {
-        getIcon().setIconText(resId);
+    public void setIconTextRes(@StringRes int resId) {
+        getIcon().setIconTextRes(resId);
     }
 
     @Override
@@ -78,8 +81,13 @@ public class PrintView extends ImageView implements IPrintView {
     }
 
     @Override
-    public void setIconColor(int resId) {
-        getIcon().setIconColor(resId);
+    public void setIconColorRes(@ColorRes int resId) {
+        getIcon().setIconColorRes(resId);
+    }
+
+    @Override
+    public void setIconColor(int color) {
+        getIcon().setIconColor(color);
     }
 
     @Override
@@ -93,8 +101,13 @@ public class PrintView extends ImageView implements IPrintView {
     }
 
     @Override
-    public void setIconSize(int resId) {
-        getIcon().setIconSize(resId);
+    public void setIconSizeRes(@DimenRes int resId) {
+        getIcon().setIconSizeRes(resId);
+    }
+
+    @Override
+    public void setIconSizeDp(float size) {
+        getIcon().setIconSizeDp(size);
         // hack for calling resizeFromDrawable()
         setSelected(isSelected());
     }
