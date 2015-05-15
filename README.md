@@ -12,6 +12,7 @@ A lightweight Android library for use iconic fonts.
        src="http://www.android.com/images/brand/get_it_on_play_logo_small.png" />
 </a>
 
+
 Download
 --------
 
@@ -32,11 +33,18 @@ Maven:
 </dependency>
 ```
 
-Usage
------
 
-First, you need to initialize the default iconic font in [Application.onCreate()][1] method. If
-the font is not specified, then the font is used by default.
+Getting started
+---------------
+
+#### Add fonts
+
+Add your custom iconic fonts to `assets/`.
+
+
+#### Setup default font
+
+Define your default iconic font using `PrintConfig` in [Application.onCreate()][1] method. This font will be used in cases when the value of a font is not specified.
 
 ```java
 public class MyApplication extends Application {
@@ -50,52 +58,15 @@ public class MyApplication extends Application {
 }
 ```
 
-#### PrintView
+_Note: The definition of the default font is not necessary, in this case, you must specify the value of the font all the time._
 
-Use `PrintView` as single icon in your layout.
 
-```xml
-<com.github.johnkil.print.PrintView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        print:iconText="@string/ic_android"
-        print:iconColor="@color/icon_color"
-        print:iconSize="@dimen/icon_size"
-        print:iconFont="fonts/iconic-font.ttf"
-        android:contentDescription="@string/ic_android_description"/>
-```
-
-#### PrintButton
-
-Use `PrintButton` to create a button with an icon.
-
-```xml
-<com.github.johnkil.print.PrintButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        print:iconText="@string/ic_android"
-        print:iconColor="@color/icon_color"
-        print:iconSize="@dimen/icon_size"
-        print:iconFont="fonts/iconic-font.ttf"
-        android:contentDescription="@string/ic_android_description"/>
-```
+Usage
+-----
 
 #### PrintDrawable
 
-If you need an icon in `ImageView` or in `ActionBar`, then you should use `PrintDrawable`.
-
-```java
-ImageView imageView = (ImageView) findViewById(R.id.image);
-// Set an icon in the ImageView
-imageView.setImageDrawable(
-    new PrintDrawable.Builder(context)
-            .iconTextRes(R.string.ic_info)
-            .iconColorRes(R.color.icon_color)
-            .iconSizeRes(R.dimen.icon_size)
-            .iconFont("fonts/iconic-font.ttf")
-            .build()
-);
-```
+If you need an icon in `ImageView` or in `ActionBar`, then you should use `PrintDrawable`. To create the drawable using `PrintDrawable.Builder`.
 
 ```java
 @Override
@@ -107,12 +78,48 @@ public boolean onCreateOptionsMenu(Menu menu) {
                     .iconTextRes(R.string.ic_info)
                     .iconColorRes(R.color.ab_icon_color)
                     .iconSizeRes(R.dimen.ab_icon_size)
-                    .iconFont("fonts/iconic-font.ttf")
                     .build()
     );
     return true;
 }
 ```
+
+
+#### Custom views
+
+Use `PrintView` as single icon in your layout.
+
+```xml
+<com.github.johnkil.print.PrintView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        print:iconText="@string/ic_android"
+        print:iconColor="@color/icon_color"
+        print:iconSize="@dimen/icon_size"/>
+```
+
+Or use `PrintButton` to create a button with an icon. Using a view similar to `PrintView`.
+
+```xml
+<com.github.johnkil.print.PrintButton
+        ... />
+```
+
+#### XML Attributes
+
+| Attribute Name | Related Method                      |
+| -------------- | ----------------------------------- |
+| __iconText__   | setIconTextRes(int resId)           |
+|                | setIconText(CharSequence text)      |
+| __iconColor__  | setIconColorRes(int resId)          |
+|                | setIconColor(int color)             |
+|                | setIconColor(ColorStateList colors) |
+| __iconSize__   | setIconSizeRes(int resId)           |
+|                | setIconSizeDp(float size)           |
+|                | setIconSize(int unit, float size)   |
+| __iconFont__   | setIconFont(String path)            |
+|                | setIconFont(Typeface font)          |
+
 
 Links
 -----
