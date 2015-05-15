@@ -2,6 +2,14 @@ Change Log
 ==========
 
 
+## Version 1.3.0
+
+_2015-05-15_
+
+ * Fix: Support UTF-16 chars.
+ * Extended the capabilities of API.
+ 
+ 
 ## Version 1.2.3
 
 _2015-01-21_
