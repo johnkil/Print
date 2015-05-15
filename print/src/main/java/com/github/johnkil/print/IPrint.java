@@ -28,7 +28,6 @@ interface IPrint {
     /**
      * Sets the icon text from resources.
      *
-     * @attr ref R.styleable#PrintView_iconText
      * @see #setIconText(CharSequence)
      * @see #getIconText()
      */
@@ -38,7 +37,6 @@ interface IPrint {
      * Sets the icon text based on char code from integer resources. Fixed issue of support
      * UTF-16 chars (see <a href="https://github.com/johnkil/Print/issues/11">issue #11</a>)
      *
-     * @attr ref R.styleable#PrintView_iconCode
      * @see #setIconCode(int)
      * @see #getIconText()
      */
@@ -48,7 +46,6 @@ interface IPrint {
      * Sets the icon text based on char code. Fixed issue of support
      * UTF-16 chars (see <a href="https://github.com/johnkil/Print/issues/11">issue #11</a>)
      *
-     * @attr ref R.styleable#PrintView_iconCode
      * @see #setIconCodeRes(int)
      * @see #getIconText()
      */
@@ -57,7 +54,6 @@ interface IPrint {
     /**
      * Sets the icon text.
      *
-     * @attr ref R.styleable#PrintView_iconText
      * @see #setIconTextRes(int)
      * @see #getIconText()
      */
@@ -66,7 +62,6 @@ interface IPrint {
     /**
      * Return the icon text, or null if icon text is not set.
      *
-     * @attr ref R.styleable#PrintView_iconText
      * @see #setIconTextRes(int)
      * @see #setIconText(CharSequence)
      */
@@ -75,7 +70,6 @@ interface IPrint {
     /**
      * Sets the icon color from resources.
      *
-     * @attr ref R.styleable#PrintView_iconColor
      * @see #setIconColor(int)
      * @see #setIconColor(ColorStateList)
      * @see #getIconColor()
@@ -85,7 +79,6 @@ interface IPrint {
     /**
      * Sets the icon color for all the states (normal, selected, focused) to be this color.
      *
-     * @attr ref R.styleable#PrintView_iconColor
      * @see #setIconColorRes(int)
      * @see #setIconColor(ColorStateList)
      * @see #getIconColor()
@@ -95,7 +88,6 @@ interface IPrint {
     /**
      * Sets the icon color.
      *
-     * @attr ref R.styleable#PrintView_iconColor
      * @see #setIconColorRes(int)
      * @see #setIconColor(int)
      * @see #getIconColor()
@@ -105,7 +97,6 @@ interface IPrint {
     /**
      * Return the icon colors for the different states (normal, selected, focused).
      *
-     * @attr ref R.styleable#PrintView_iconColor
      * @see #setIconColorRes(int)
      * @see #setIconColor(int)
      * @see #setIconColor(ColorStateList)
@@ -115,7 +106,6 @@ interface IPrint {
     /**
      * Sets the icon size from resources.
      *
-     * @attr ref R.styleable#PrintView_iconSize
      * @see #setIconSizeDp(float)
      * @see #setIconSize(int, float)
      * @see #getIconSize()
@@ -126,7 +116,6 @@ interface IPrint {
      * Sets the icon size to the given value, interpreted as "device independent pixels" units.
      *
      * @param size The device independent pixels size.
-     * @attr ref R.styleable#PrintView_iconSize
      * @see #setIconSizeRes(int)
      * @see #setIconSize(int, float)
      * @see #getIconSize()
@@ -139,7 +128,6 @@ interface IPrint {
      *
      * @param unit The desired dimension unit.
      * @param size The desired size in the given units.
-     * @attr ref R.styleable#PrintView_iconSize
      * @see #setIconSizeRes(int)
      * @see #setIconSizeDp(float)
      * @see #getIconSize()
@@ -149,7 +137,6 @@ interface IPrint {
     /**
      * Return the icon size (in pixels).
      *
-     * @attr ref R.styleable#PrintView_iconSize
      * @see #setIconSizeRes(int)
      * @see #setIconSizeDp(float)
      * @see #setIconSize(int, float)
@@ -160,7 +147,6 @@ interface IPrint {
      * Sets the iconic font from assets.
      *
      * @param path The file name of the font in the assets directory, e.g. "fonts/iconic-font.ttf".
-     * @attr ref R.styleable#PrintView_iconFont
      * @see #setIconFont(Typeface)
      * @see #getIconFont()
      */
@@ -169,7 +155,6 @@ interface IPrint {
     /**
      * Sets the iconic font.
      *
-     * @attr ref R.styleable#PrintView_iconFont
      * @see #setIconFont(String)
      * @see #getIconFont()
      */
@@ -178,7 +163,6 @@ interface IPrint {
     /**
      * Return the iconic font.
      *
-     * @attr ref R.styleable#PrintView_iconFont
      * @see #setIconFont(String)
      * @see #setIconFont(Typeface)
      */
