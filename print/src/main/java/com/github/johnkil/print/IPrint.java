@@ -20,6 +20,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Typeface;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DimenRes;
+import android.support.annotation.IntegerRes;
 import android.support.annotation.StringRes;
 
 interface IPrint {
@@ -32,6 +33,26 @@ interface IPrint {
      * @see #getIconText()
      */
     void setIconTextRes(@StringRes int resId);
+
+    /**
+     * Sets the icon text based on char code from integer resources. Fixed issue of support
+     * UTF-16 chars (see <a href="https://github.com/johnkil/Print/issues/11">issue #11</a>)
+     *
+     * @attr ref R.styleable#PrintView_iconCode
+     * @see #setIconCode(int)
+     * @see #getIconText()
+     */
+    void setIconCodeRes(@IntegerRes int resId);
+
+    /**
+     * Sets the icon text based on char code. Fixed issue of support
+     * UTF-16 chars (see <a href="https://github.com/johnkil/Print/issues/11">issue #11</a>)
+     *
+     * @attr ref R.styleable#PrintView_iconCode
+     * @see #setIconCodeRes(int)
+     * @see #getIconText()
+     */
+    void setIconCode(int code);
 
     /**
      * Sets the icon text.

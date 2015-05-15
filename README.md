@@ -107,10 +107,12 @@ Or use `PrintButton` to create a button with an icon. Using a view similar to `P
 
 #### XML Attributes
 
-| _Attribute Name_ | _Related Method_                      |
+| _Attribute Name_ | _Related Method_                    |
 | :--------------- | :---------------------------------- |
 | __iconText__     | setIconTextRes(int resId)           |
 |                  | setIconText(CharSequence text)      |
+| __iconCode__     | setIconCodeRes(int resId)           |
+|                  | setIconCode(int code)               |
 | __iconColor__    | setIconColorRes(int resId)          |
 |                  | setIconColor(int color)             |
 |                  | setIconColor(ColorStateList colors) |

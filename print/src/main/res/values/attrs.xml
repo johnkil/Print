@@ -18,9 +18,11 @@
 <resources>
 
     <declare-styleable name="PrintView">
-        <!-- Icon. -->
+        <!-- Icon text. -->
         <attr name="iconText" format="string"/>
-        <!-- Icon color. -->
+        <!-- Icon text based on char code. -->
+        <attr name="iconCode" format="integer"/>
+        <!-- Color of the icon. -->
         <attr name="iconColor" format="color"/>
         <!-- Size of the icon. -->
         <attr name="iconSize" format="dimension"/>

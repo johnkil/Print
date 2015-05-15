@@ -29,6 +29,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.ColorRes;
 import android.support.annotation.DimenRes;
+import android.support.annotation.IntegerRes;
 import android.support.annotation.StringRes;
 import android.util.Log;
 import android.util.TypedValue;
@@ -76,6 +77,16 @@ public class PrintDrawable extends Drawable implements IPrint {
     @Override
     public void setIconTextRes(@StringRes int resId) {
         setIconText(mContext.getText(resId));
+    }
+
+    @Override
+    public void setIconCodeRes(@IntegerRes int resId) {
+        setIconCode(mContext.getResources().getInteger(resId));
+    }
+
+    @Override
+    public void setIconCode(int code) {
+        setIconText(new String(Character.toChars(code)));
     }
 
     @Override
@@ -252,6 +263,14 @@ public class PrintDrawable extends Drawable implements IPrint {
 
         public Builder iconTextRes(@StringRes int resId) {
             return iconText(mContext.getString(resId));
+        }
+
+        public Builder iconCodeRes(@IntegerRes int resId) {
+            return iconCode(mContext.getResources().getInteger(resId));
+        }
+
+        public Builder iconCode(int code) {
+            return iconText(new String(Character.toChars(code)));
         }
 
         public Builder iconText(CharSequence text) {

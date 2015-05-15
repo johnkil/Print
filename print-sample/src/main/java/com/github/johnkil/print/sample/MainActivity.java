@@ -71,10 +71,10 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         menu.findItem(R.id.action_info).setIcon(
                 new PrintDrawable.Builder(this)
-                        .iconTextRes(R.string.ic_holo_about)
+                        .iconCodeRes(R.integer.ic_ss_standard_like)
                         .iconColorRes(R.color.ab_icon_color)
                         .iconSizeRes(R.dimen.ab_icon_size)
-                        .iconFont("fonts/holo-icon-font.ttf")
+                        .iconFont("fonts/ss-standard.otf")
                         .build()
         );
         return true;

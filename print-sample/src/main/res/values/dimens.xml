@@ -18,6 +18,6 @@
 <resources>
 
     <!-- action bar icon size -->
-    <dimen name="ab_icon_size">32dp</dimen>
+    <dimen name="ab_icon_size">24dp</dimen>
 
 </resources>

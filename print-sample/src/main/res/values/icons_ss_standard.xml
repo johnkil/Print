@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created By Bogdan Melnychuk -->
+
+<resources>
+
+    <integer name="ic_ss_standard_phone">0x1f4de</integer>
+    <integer name="ic_ss_standard_like">0x1f44d</integer>
+
+</resources>

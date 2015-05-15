@@ -44,6 +44,11 @@ class PrintViewUtils {
                 iconBuilder.iconText(iconText);
             }
 
+            if (a.hasValue(R.styleable.PrintView_iconCode)) {
+                int iconCode = a.getInteger(R.styleable.PrintView_iconCode, 0);
+                iconBuilder.iconCode(iconCode);
+            }
+
             if (!inEditMode && a.hasValue(R.styleable.PrintView_iconFont)) {
                 String iconFontPath = a.getString(R.styleable.PrintView_iconFont);
                 iconBuilder.iconFont(TypefaceManager.load(context.getAssets(), iconFontPath));
