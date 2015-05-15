@@ -37,22 +37,29 @@
 
 <p>Gradle:</p>
 
-<div class="highlight highlight-groovy"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.github.johnkil.print:print:1.2.3<span class="pl-pds">'</span></span></pre></div>
+<div class="highlight highlight-groovy"><pre>compile <span class="pl-s"><span class="pl-pds">'</span>com.github.johnkil.print:print:1.3.0<span class="pl-pds">'</span></span></pre></div>
 
 <p>Maven:</p>
 
 <div class="highlight highlight-xml"><pre>&lt;<span class="pl-ent">dependency</span>&gt;
     &lt;<span class="pl-ent">groupId</span>&gt;com.github.johnkil.print&lt;/<span class="pl-ent">groupId</span>&gt;
     &lt;<span class="pl-ent">artifactId</span>&gt;print&lt;/<span class="pl-ent">artifactId</span>&gt;
-    &lt;<span class="pl-ent">version</span>&gt;1.2.3&lt;/<span class="pl-ent">version</span>&gt;
+    &lt;<span class="pl-ent">version</span>&gt;1.3.0&lt;/<span class="pl-ent">version</span>&gt;
     &lt;<span class="pl-ent">type</span>&gt;aar&lt;/<span class="pl-ent">type</span>&gt;
 &lt;/<span class="pl-ent">dependency</span>&gt;</pre></div>
 
 <h2>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
+<a id="getting-started" class="anchor" href="#getting-started" aria-hidden="true"><span class="octicon octicon-link"></span></a>Getting started</h2>
 
-<p>First, you need to initialize the default iconic font in <a href="http://developer.android.com/reference/android/app/Application.html#onCreate%28%29">Application.onCreate()</a> method. If
-the font is not specified, then the font is used by default.</p>
+<h4>
+<a id="add-fonts" class="anchor" href="#add-fonts" aria-hidden="true"><span class="octicon octicon-link"></span></a>Add fonts</h4>
+
+<p>Add your custom iconic fonts to <code>assets/</code>.</p>
+
+<h4>
+<a id="setup-default-font" class="anchor" href="#setup-default-font" aria-hidden="true"><span class="octicon octicon-link"></span></a>Setup default font</h4>
+
+<p>Define your default iconic font using <code>PrintConfig</code> in <a href="http://developer.android.com/reference/android/app/Application.html#onCreate%28%29">Application.onCreate()</a> method. This font will be used in cases when the value of a font is not specified.</p>
 
 <div class="highlight highlight-java"><pre><span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">MyApplication</span> <span class="pl-k">extends</span> <span class="pl-e">Application</span> {
 
@@ -64,49 +71,15 @@ the font is not specified, then the font is used by default.</p>
 
 }</pre></div>
 
-<h4>
-<a id="printview" class="anchor" href="#printview" aria-hidden="true"><span class="octicon octicon-link"></span></a>PrintView</h4>
+<p><em>Note: The definition of the default font is not necessary, in this case, you must specify the value of the font all the time.</em></p>
 
-<p>Use <code>PrintView</code> as single icon in your layout.</p>
-
-<div class="highlight highlight-xml"><pre>&lt;<span class="pl-ent">com</span>.github.johnkil.print.PrintView
-        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
-        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
-        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconColor</span>=<span class="pl-s"><span class="pl-pds">"</span>@color/icon_color<span class="pl-pds">"</span></span>
-        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconSize</span>=<span class="pl-s"><span class="pl-pds">"</span>@dimen/icon_size<span class="pl-pds">"</span></span>
-        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconFont</span>=<span class="pl-s"><span class="pl-pds">"</span>fonts/iconic-font.ttf<span class="pl-pds">"</span></span>
-        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconText</span>=<span class="pl-s"><span class="pl-pds">"</span>@string/ic_android<span class="pl-pds">"</span></span>
-        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">contentDescription</span>=<span class="pl-s"><span class="pl-pds">"</span>@string/ic_android_description<span class="pl-pds">"</span></span>/&gt;</pre></div>
-
-<h4>
-<a id="printbutton" class="anchor" href="#printbutton" aria-hidden="true"><span class="octicon octicon-link"></span></a>PrintButton</h4>
-
-<p>Use <code>PrintButton</code> to create a button with an icon.</p>
-
-<div class="highlight highlight-xml"><pre>&lt;<span class="pl-ent">com</span>.github.johnkil.print.PrintButton
-        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
-        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
-        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconColor</span>=<span class="pl-s"><span class="pl-pds">"</span>@color/icon_color<span class="pl-pds">"</span></span>
-        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconSize</span>=<span class="pl-s"><span class="pl-pds">"</span>@dimen/icon_size<span class="pl-pds">"</span></span>
-        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconFont</span>=<span class="pl-s"><span class="pl-pds">"</span>fonts/iconic-font.ttf<span class="pl-pds">"</span></span>
-        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconText</span>=<span class="pl-s"><span class="pl-pds">"</span>@string/ic_android<span class="pl-pds">"</span></span>
-        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">contentDescription</span>=<span class="pl-s"><span class="pl-pds">"</span>@string/ic_android_description<span class="pl-pds">"</span></span>/&gt;</pre></div>
+<h2>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span class="octicon octicon-link"></span></a>Usage</h2>
 
 <h4>
 <a id="printdrawable" class="anchor" href="#printdrawable" aria-hidden="true"><span class="octicon octicon-link"></span></a>PrintDrawable</h4>
 
-<p>If you need an icon in <code>ImageView</code> or in <code>ActionBar</code>, then you should use <code>PrintDrawable</code>.</p>
-
-<div class="highlight highlight-java"><pre><span class="pl-smi">ImageView</span> imageView <span class="pl-k">=</span> (<span class="pl-smi">ImageView</span>) findViewById(<span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>image);
-<span class="pl-c">// Set an icon in the ImageView</span>
-imageView<span class="pl-k">.</span>setImageDrawable(
-    <span class="pl-k">new</span> <span class="pl-smi">PrintDrawable</span>.<span class="pl-smi">Builder</span>(context)
-            .iconText(<span class="pl-smi">R</span><span class="pl-k">.</span>string<span class="pl-k">.</span>ic_info)
-            .iconColor(<span class="pl-smi">R</span><span class="pl-k">.</span>color<span class="pl-k">.</span>icon_color)
-            .iconSize(<span class="pl-smi">R</span><span class="pl-k">.</span>dimen<span class="pl-k">.</span>icon_size)
-            .iconFont(<span class="pl-s"><span class="pl-pds">"</span>fonts/iconic-font.ttf<span class="pl-pds">"</span></span>)
-            .build()
-);</pre></div>
+<p>If you need an icon in <code>ImageView</code> or in <code>ActionBar</code>, then you should use <code>PrintDrawable</code>. To create the drawable using <code>PrintDrawable.Builder</code>.</p>
 
 <div class="highlight highlight-java"><pre>@<span class="pl-smi">Override</span>
 <span class="pl-k">public</span> <span class="pl-k">boolean</span> onCreateOptionsMenu(<span class="pl-smi">Menu</span> menu) {
@@ -114,14 +87,84 @@ imageView<span class="pl-k">.</span>setImageDrawable(
     <span class="pl-c">// Set an icon in the ActionBar</span>
     menu<span class="pl-k">.</span>findItem(<span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>action_info)<span class="pl-k">.</span>setIcon(
             <span class="pl-k">new</span> <span class="pl-smi">PrintDrawable</span>.<span class="pl-smi">Builder</span>(context)
-                    .iconText(<span class="pl-smi">R</span><span class="pl-k">.</span>string<span class="pl-k">.</span>ic_info)
-                    .iconColor(<span class="pl-smi">R</span><span class="pl-k">.</span>color<span class="pl-k">.</span>ab_icon_color)
-                    .iconSize(<span class="pl-smi">R</span><span class="pl-k">.</span>dimen<span class="pl-k">.</span>ab_icon_size)
-                    .iconFont(<span class="pl-s"><span class="pl-pds">"</span>fonts/iconic-font.ttf<span class="pl-pds">"</span></span>)
+                    .iconTextRes(<span class="pl-smi">R</span><span class="pl-k">.</span>string<span class="pl-k">.</span>ic_info)
+                    .iconColorRes(<span class="pl-smi">R</span><span class="pl-k">.</span>color<span class="pl-k">.</span>ab_icon_color)
+                    .iconSizeRes(<span class="pl-smi">R</span><span class="pl-k">.</span>dimen<span class="pl-k">.</span>ab_icon_size)
                     .build()
     );
     <span class="pl-k">return</span> <span class="pl-c1">true</span>;
 }</pre></div>
+
+<h4>
+<a id="custom-views" class="anchor" href="#custom-views" aria-hidden="true"><span class="octicon octicon-link"></span></a>Custom views</h4>
+
+<p>Use <code>PrintView</code> as single icon in your layout.</p>
+
+<div class="highlight highlight-xml"><pre>&lt;<span class="pl-ent">com</span>.github.johnkil.print.PrintView
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
+        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconText</span>=<span class="pl-s"><span class="pl-pds">"</span>@string/ic_android<span class="pl-pds">"</span></span>
+        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconColor</span>=<span class="pl-s"><span class="pl-pds">"</span>@color/icon_color<span class="pl-pds">"</span></span>
+        <span class="pl-e">print</span><span class="pl-e">:</span><span class="pl-e">iconSize</span>=<span class="pl-s"><span class="pl-pds">"</span>@dimen/icon_size<span class="pl-pds">"</span></span>/&gt;</pre></div>
+
+<p>Or use <code>PrintButton</code> to create a button with an icon. Using a view similar to <code>PrintView</code>.</p>
+
+<div class="highlight highlight-xml"><pre>&lt;<span class="pl-ent">com</span>.github.johnkil.print.PrintButton
+        ... /&gt;</pre></div>
+
+<h4>
+<a id="xml-attributes" class="anchor" href="#xml-attributes" aria-hidden="true"><span class="octicon octicon-link"></span></a>XML Attributes</h4>
+
+<table>
+<thead>
+<tr>
+<th align="left"><em>Attribute Name</em></th>
+<th align="left"><em>Related Method</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><strong>iconText</strong></td>
+<td align="left">setIconTextRes(int resId)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">setIconText(CharSequence text)</td>
+</tr>
+<tr>
+<td align="left"><strong>iconColor</strong></td>
+<td align="left">setIconColorRes(int resId)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">setIconColor(int color)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">setIconColor(ColorStateList colors)</td>
+</tr>
+<tr>
+<td align="left"><strong>iconSize</strong></td>
+<td align="left">setIconSizeRes(int resId)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">setIconSizeDp(float size)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">setIconSize(int unit, float size)</td>
+</tr>
+<tr>
+<td align="left"><strong>iconFont</strong></td>
+<td align="left">setIconFont(String path)</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">setIconFont(Typeface font)</td>
+</tr>
+</tbody>
+</table>
 
 <h2>
 <a id="links" class="anchor" href="#links" aria-hidden="true"><span class="octicon octicon-link"></span></a>Links</h2>
