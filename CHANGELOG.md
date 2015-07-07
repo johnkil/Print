@@ -2,6 +2,13 @@ Change Log
 ==========
 
 
+## Version 1.3.1
+
+_2015-07-07_
+
+ * Fix: Create PrintView in code.
+
+
 ## Version 1.3.0
 
 _2015-05-15_
