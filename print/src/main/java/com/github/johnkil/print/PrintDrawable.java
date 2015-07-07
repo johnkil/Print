@@ -71,7 +71,10 @@ public class PrintDrawable extends Drawable implements IPrint {
 
         mPaint.setTextSize(mIconSize);
         mPaint.setTypeface(mIconFont);
-        updateIconColors();
+
+        if (mIconColor != null) {
+            updateIconColors();
+        }
     }
 
     @Override
