@@ -1,19 +1,20 @@
 apply plugin: 'com.android.application'
 
-android {
-    compileSdkVersion 22
-    buildToolsVersion "22.0.1"
-
-    defaultConfig {
-        applicationId "com.github.johnkil.print.sample"
-        minSdkVersion 7
-        targetSdkVersion 22
-        versionCode 8
-        versionName "1.3.1"
-    }
+dependencies {
+    compile project(':print')
+    compile rootProject.ext.supportAppCompat
 }
 
-dependencies {
-    compile 'com.android.support:appcompat-v7:22.2.0'
-    compile project(':print')
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion 7
+        targetSdkVersion 23
+        applicationId 'com.github.johnkil.print.sample'
+
+        versionCode 1
+        versionName '1.0'
+    }
 }

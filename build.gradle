@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.2.3'
+        classpath 'com.android.tools.build:gradle:1.4.0-beta2'
     }
 }
 
@@ -11,4 +11,13 @@ allprojects {
     repositories {
         jcenter()
     }
+}
+
+ext {
+    compileSdkVersion = 23
+    buildToolsVersion = '23.0.1'
+
+    // Android dependencies.
+    supportAppCompat = 'com.android.support:appcompat-v7:23.0.1'
+    supportAnnotations = 'com.android.support:support-annotations:23.0.1'
 }
