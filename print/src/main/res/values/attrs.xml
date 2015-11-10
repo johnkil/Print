@@ -19,15 +19,15 @@
 
     <declare-styleable name="PrintView">
         <!-- Icon text. -->
-        <attr name="iconText" format="string"/>
+        <attr name="print_iconText" format="string"/>
         <!-- Icon text based on char code. -->
-        <attr name="iconCode" format="integer"/>
+        <attr name="print_iconCode" format="integer"/>
         <!-- Color of the icon. -->
-        <attr name="iconColor" format="color"/>
+        <attr name="print_iconColor" format="color"/>
         <!-- Size of the icon. -->
-        <attr name="iconSize" format="dimension"/>
+        <attr name="print_iconSize" format="dimension"/>
         <!-- File name of the font in the assets directory. -->
-        <attr name="iconFont" format="string"/>
+        <attr name="print_iconFont" format="string"/>
     </declare-styleable>
 
 </resources>

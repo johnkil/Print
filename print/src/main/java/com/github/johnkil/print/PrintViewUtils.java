@@ -39,27 +39,27 @@ class PrintViewUtils {
         if (attrs != null) {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.PrintView);
 
-            if (a.hasValue(R.styleable.PrintView_iconText)) {
-                String iconText = a.getString(R.styleable.PrintView_iconText);
+            if (a.hasValue(R.styleable.PrintView_print_iconText)) {
+                String iconText = a.getString(R.styleable.PrintView_print_iconText);
                 iconBuilder.iconText(iconText);
             }
 
-            if (a.hasValue(R.styleable.PrintView_iconCode)) {
-                int iconCode = a.getInteger(R.styleable.PrintView_iconCode, 0);
+            if (a.hasValue(R.styleable.PrintView_print_iconCode)) {
+                int iconCode = a.getInteger(R.styleable.PrintView_print_iconCode, 0);
                 iconBuilder.iconCode(iconCode);
             }
 
-            if (!inEditMode && a.hasValue(R.styleable.PrintView_iconFont)) {
-                String iconFontPath = a.getString(R.styleable.PrintView_iconFont);
+            if (!inEditMode && a.hasValue(R.styleable.PrintView_print_iconFont)) {
+                String iconFontPath = a.getString(R.styleable.PrintView_print_iconFont);
                 iconBuilder.iconFont(TypefaceManager.load(context.getAssets(), iconFontPath));
             }
 
-            if (a.hasValue(R.styleable.PrintView_iconColor)) {
-                ColorStateList iconColor = a.getColorStateList(R.styleable.PrintView_iconColor);
+            if (a.hasValue(R.styleable.PrintView_print_iconColor)) {
+                ColorStateList iconColor = a.getColorStateList(R.styleable.PrintView_print_iconColor);
                 iconBuilder.iconColor(iconColor);
             }
 
-            int iconSize = a.getDimensionPixelSize(R.styleable.PrintView_iconSize, 0);
+            int iconSize = a.getDimensionPixelSize(R.styleable.PrintView_print_iconSize, 0);
             iconBuilder.iconSize(TypedValue.COMPLEX_UNIT_PX, iconSize);
 
             iconBuilder.inEditMode(inEditMode);

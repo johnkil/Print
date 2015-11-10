@@ -93,9 +93,9 @@ Use `PrintView` as single icon in your layout.
 <com.github.johnkil.print.PrintView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        print:iconText="@string/ic_android"
-        print:iconColor="@color/icon_color"
-        print:iconSize="@dimen/icon_size"/>
+        app:print_iconText="@string/ic_android"
+        app:print_iconColor="@color/icon_color"
+        app:print_iconSize="@dimen/icon_size"/>
 ```
 
 Or use `PrintButton` to create a button with an icon. Using a view similar to `PrintView`.
@@ -107,20 +107,20 @@ Or use `PrintButton` to create a button with an icon. Using a view similar to `P
 
 #### XML Attributes
 
-| _Attribute Name_ | _Related Method_                    |
-| :--------------- | :---------------------------------- |
-| __iconText__     | setIconTextRes(int resId)           |
-|                  | setIconText(CharSequence text)      |
-| __iconCode__     | setIconCodeRes(int resId)           |
-|                  | setIconCode(int code)               |
-| __iconColor__    | setIconColorRes(int resId)          |
-|                  | setIconColor(int color)             |
-|                  | setIconColor(ColorStateList colors) |
-| __iconSize__     | setIconSizeRes(int resId)           |
-|                  | setIconSizeDp(float size)           |
-|                  | setIconSize(int unit, float size)   |
-| __iconFont__     | setIconFont(String path)            |
-|                  | setIconFont(Typeface font)          |
+| _Attribute Name_       | _Related Method_                    |
+| :--------------------- | :---------------------------------- |
+| __print_iconText__     | setIconTextRes(int resId)           |
+|                        | setIconText(CharSequence text)      |
+| __print_iconCode__     | setIconCodeRes(int resId)           |
+|                        | setIconCode(int code)               |
+| __print_iconColor__    | setIconColorRes(int resId)          |
+|                        | setIconColor(int color)             |
+|                        | setIconColor(ColorStateList colors) |
+| __print_iconSize__     | setIconSizeRes(int resId)           |
+|                        | setIconSizeDp(float size)           |
+|                        | setIconSize(int unit, float size)   |
+| __print_iconFont__     | setIconFont(String path)            |
+|                        | setIconFont(Typeface font)          |
 
 
 Links

@@ -16,7 +16,7 @@
   -->
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:print="http://schemas.android.com/apk/res-auto"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
                 xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -28,9 +28,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginRight="8dp"
+        android:text="@string/size"
         android:textColor="@color/primary_text"
-        android:textSize="18sp"
-        android:text="@string/size"/>
+        android:textSize="18sp"/>
 
     <TextView
         android:id="@+id/size_value"
@@ -48,14 +48,21 @@
         android:layout_below="@id/size_label"
         android:max="320"/>
 
-    <com.github.johnkil.print.PrintView
-        android:id="@+id/icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/size_bar"
-        android:contentDescription="@string/ic_adb_description"
-        print:iconText="@string/ic_material_adb"
-        print:iconColor="@color/icon"
-        print:iconSize="180dp"/>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/size_bar">
+
+        <com.github.johnkil.print.PrintView
+            android:id="@+id/icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:contentDescription="@string/ic_adb_description"
+            app:print_iconColor="@color/icon"
+            app:print_iconSize="180dp"
+            app:print_iconText="@string/ic_material_adb"/>
+
+    </FrameLayout>
 
 </RelativeLayout>
