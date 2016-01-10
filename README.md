@@ -157,6 +157,7 @@ License
 [0]: https://github.com/theDazzler/droidicon
 [0]: https://github.com/mikepenz/Android-Iconics
 [0]: https://github.com/Malinskiy/android-material-icons
+[0]: https://github.com/kazy1991/FontDrawable
 
 [0]: https://github.com/svendvd/Fontinator
 [0]: https://github.com/code-mc/material-icon-lib
