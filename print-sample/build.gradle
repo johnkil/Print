@@ -10,8 +10,8 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 7
-        targetSdkVersion 23
+        minSdkVersion 9
+        targetSdkVersion 24
         applicationId 'com.github.johnkil.print.sample'
 
         versionCode 1
