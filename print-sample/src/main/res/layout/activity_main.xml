@@ -63,6 +63,18 @@
             app:print_iconSize="180dp"
             app:print_iconText="@string/ic_material_adb"/>
 
-    </FrameLayout>
+        <com.github.johnkil.print.PrintButton
+            android:id="@+id/icon2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="@string/ic_adb_description"
+            android:paddingStart="10dp"
+            android:drawablePadding="10dp"
+            app:print_iconTextStart="@string/ic_material_adb"
+            android:text="I'm a button" />
 
+    </FrameLayout>
+    
 </RelativeLayout>

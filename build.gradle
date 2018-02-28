@@ -3,7 +3,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.1'
+        classpath 'com.android.tools.build:gradle:3.0.1'
     }
 }
 
@@ -14,8 +14,8 @@ allprojects {
 }
 
 ext {
-    compileSdkVersion = 24
-    buildToolsVersion = '24.0.3'
+    compileSdkVersion = 27
+    buildToolsVersion = '27.0.1'
 
     // Android dependencies.
     supportAppCompat = 'com.android.support:appcompat-v7:24.2.1'

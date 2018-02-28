@@ -28,6 +28,14 @@
         <attr name="print_iconSize" format="dimension"/>
         <!-- File name of the font in the assets directory. -->
         <attr name="print_iconFont" format="string"/>
+
+        <!-- Icon text for button. -->
+        <attr name="print_iconTextLeft" format="string"/>
+        <attr name="print_iconTextRight" format="string"/>
+        <attr name="print_iconTextStart" format="string"/>
+        <attr name="print_iconTextEnd" format="string"/>
+        <attr name="print_iconTextTop" format="string"/>
+        <attr name="print_iconTextBottom" format="string"/>
     </declare-styleable>
 
 </resources>
