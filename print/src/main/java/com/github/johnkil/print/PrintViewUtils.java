@@ -20,6 +20,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.TypedValue;
 
 class PrintViewUtils {
@@ -67,6 +68,28 @@ class PrintViewUtils {
             a.recycle();
         }
 
+        return iconBuilder.build();
+    }
+    
+    static PrintDrawable buildIcon(Context context, String iconText, int iconCode, String iconFontPath, 
+                                   ColorStateList iconColor, float iconSize, boolean inEditMode) {
+        PrintDrawable.Builder iconBuilder = new PrintDrawable.Builder(context);
+
+		iconBuilder.iconText(iconText);
+		if( iconCode != 0 ) iconBuilder.iconCode(iconCode);
+		
+		if (!inEditMode && iconFontPath != null) {
+			iconBuilder.iconFont(TypefaceManager.load(context.getAssets(), iconFontPath));
+		}
+	
+		iconBuilder.iconColor(iconColor);
+		
+		iconBuilder.iconSize(TypedValue.COMPLEX_UNIT_PX, iconSize);
+	
+		iconBuilder.inEditMode(inEditMode);
+    
+        Log.v("PrintViewUtils", "Conteudo: " + iconText + ", " + iconFontPath + ", " + 
+                iconColor + ", " + iconSize + ", " + inEditMode );
         return iconBuilder.build();
     }
 
